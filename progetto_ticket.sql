@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Dic 07, 2022 alle 15:08
+-- Host: 127.0.0.1:3308
+-- Creato il: Dic 07, 2022 alle 17:30
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -28,12 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cliente` (
-  `Partita_IVA` int(11) NOT NULL,
+  `Partita_IVA` char(11) NOT NULL,
   `Nome` varchar(20) NOT NULL,
   `Stato` varchar(20) NOT NULL,
   `Città` varchar(20) DEFAULT NULL,
   `Saldo` char(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
+
+--
+-- Dump dei dati per la tabella `cliente`
+--
+
+INSERT INTO `cliente` (`Partita_IVA`, `Nome`, `Stato`, `Città`, `Saldo`) VALUES
+('1', 'Samsung', 'Italia', 'Ancona', '+'),
+('2', 'Apple', 'Inghilterra', 'Londra', '+');
 
 -- --------------------------------------------------------
 
@@ -45,7 +53,17 @@ CREATE TABLE `consumabile` (
   `IDConsumabile` int(12) NOT NULL,
   `Categoria` varchar(15) NOT NULL,
   `Prezzo` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
+
+--
+-- Dump dei dati per la tabella `consumabile`
+--
+
+INSERT INTO `consumabile` (`IDConsumabile`, `Categoria`, `Prezzo`) VALUES
+(1, 'Lampade', 15),
+(2, 'Feltri', 5),
+(3, 'feltri', 10),
+(4, 'feltri', 20);
 
 -- --------------------------------------------------------
 
@@ -59,8 +77,16 @@ CREATE TABLE `contratto` (
   `DataFine` date NOT NULL,
   `Canone` int(4) NOT NULL,
   `Banca` varchar(20) NOT NULL,
-  `Cliente` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `Cliente` char(11) NOT NULL
+) ;
+
+--
+-- Dump dei dati per la tabella `contratto`
+--
+
+INSERT INTO `contratto` (`IDContratto`, `DataInizio`, `DataFine`, `Canone`, `Banca`, `Cliente`) VALUES
+(1, '2022-12-07', '2022-12-08', 200, 'Carifermo', '1'),
+(4, '2022-12-07', '2022-12-28', 100, 'Carifermo', '2');
 
 -- --------------------------------------------------------
 
@@ -76,6 +102,13 @@ CREATE TABLE `datianagrafici` (
   `DataNascita` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `datianagrafici`
+--
+
+INSERT INTO `datianagrafici` (`CodiceFiscale`, `Nome`, `Cognome`, `Sesso`, `DataNascita`) VALUES
+('AF11udhedher', 'Andrea', 'Rossi', 'M', '2022-12-07');
+
 -- --------------------------------------------------------
 
 --
@@ -86,7 +119,7 @@ CREATE TABLE `datilavorativi` (
   `IDTecnico` int(4) NOT NULL,
   `Resident` varchar(2) NOT NULL,
   `CF` char(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -95,9 +128,16 @@ CREATE TABLE `datilavorativi` (
 --
 
 CREATE TABLE `emailcliente` (
-  `NumCliente` int(11) NOT NULL,
+  `NumCliente` char(11) NOT NULL,
   `Email` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
+
+--
+-- Dump dei dati per la tabella `emailcliente`
+--
+
+INSERT INTO `emailcliente` (`NumCliente`, `Email`) VALUES
+('1', 'ciao@ciao.com');
 
 -- --------------------------------------------------------
 
@@ -108,7 +148,7 @@ CREATE TABLE `emailcliente` (
 CREATE TABLE `emailtecnico` (
   `NumTecnico` int(4) NOT NULL,
   `Email` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -122,6 +162,14 @@ CREATE TABLE `garanzia` (
   `LuogoInstallazione` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `garanzia`
+--
+
+INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`) VALUES
+(1, '2022-12-07', 'Ancona'),
+(2, '2022-12-07', 'Fermo');
+
 -- --------------------------------------------------------
 
 --
@@ -132,7 +180,15 @@ CREATE TABLE `macchinario` (
   `IDMacchinario` int(12) NOT NULL,
   `Categoria` varchar(15) NOT NULL,
   `Gar` int(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
+
+--
+-- Dump dei dati per la tabella `macchinario`
+--
+
+INSERT INTO `macchinario` (`IDMacchinario`, `Categoria`, `Gar`) VALUES
+(1, 'Kombo TH', 1),
+(2, 'kombo tav', 2);
 
 -- --------------------------------------------------------
 
@@ -152,7 +208,7 @@ CREATE TABLE `specializzazione` (
 --
 
 CREATE TABLE `telcliente` (
-  `NumCliente` int(11) NOT NULL,
+  `NumCliente` char(11) NOT NULL,
   `Telefono` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -182,11 +238,11 @@ CREATE TABLE `ticket` (
   `Apertura` date NOT NULL DEFAULT current_timestamp(),
   `Chiusura` date DEFAULT NULL,
   `OreImpiegate` int(4) DEFAULT NULL,
-  `Cliente` int(11) NOT NULL,
+  `Cliente` char(11) NOT NULL,
   `Macchina` int(12) DEFAULT NULL,
   `Tecnico` int(4) NOT NULL,
   `Cons` int(12) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 --
 -- Indici per le tabelle scaricate
@@ -248,6 +304,7 @@ ALTER TABLE `garanzia`
 --
 ALTER TABLE `macchinario`
   ADD PRIMARY KEY (`IDMacchinario`),
+  ADD UNIQUE KEY `Gar` (`Gar`),
   ADD KEY `Gar->Garanzia.IDGaranzia` (`Gar`);
 
 --
@@ -274,10 +331,10 @@ ALTER TABLE `teltecnico`
 --
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`IDTicket`),
-  ADD KEY `Cliente->Cliente.Partita_IVA` (`Cliente`),
   ADD KEY `Macchina->Macchinario.IDMacchinario` (`Macchina`),
   ADD KEY `Cons->Consumabile.IDConsumabile` (`Cons`),
-  ADD KEY `Tecnico->IDTecnico` (`Tecnico`);
+  ADD KEY `Tecnico->IDTecnico` (`Tecnico`),
+  ADD KEY `Cliente->Cliente.Partita_IVA` (`Cliente`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -305,7 +362,7 @@ ALTER TABLE `datilavorativi`
 -- AUTO_INCREMENT per la tabella `garanzia`
 --
 ALTER TABLE `garanzia`
-  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `macchinario`

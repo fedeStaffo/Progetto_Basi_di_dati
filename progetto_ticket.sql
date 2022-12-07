@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Creato il: Dic 05, 2022 alle 17:54
+-- Host: 127.0.0.1
+-- Creato il: Dic 07, 2022 alle 15:08
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -137,6 +137,17 @@ CREATE TABLE `macchinario` (
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `specializzazione`
+--
+
+CREATE TABLE `specializzazione` (
+  `Macchina` varchar(15) NOT NULL,
+  `Tecnico` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `telcliente`
 --
 
@@ -240,6 +251,13 @@ ALTER TABLE `macchinario`
   ADD KEY `Gar->Garanzia.IDGaranzia` (`Gar`);
 
 --
+-- Indici per le tabelle `specializzazione`
+--
+ALTER TABLE `specializzazione`
+  ADD PRIMARY KEY (`Macchina`,`Tecnico`),
+  ADD KEY `Tecnico->DatiLavorativi.IDTecnico` (`Tecnico`);
+
+--
 -- Indici per le tabelle `telcliente`
 --
 ALTER TABLE `telcliente`
@@ -256,7 +274,10 @@ ALTER TABLE `teltecnico`
 --
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`IDTicket`),
-  ADD KEY `Cliente->Cliente.Partita_IVA` (`Cliente`);
+  ADD KEY `Cliente->Cliente.Partita_IVA` (`Cliente`),
+  ADD KEY `Macchina->Macchinario.IDMacchinario` (`Macchina`),
+  ADD KEY `Cons->Consumabile.IDConsumabile` (`Cons`),
+  ADD KEY `Tecnico->IDTecnico` (`Tecnico`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -333,6 +354,12 @@ ALTER TABLE `macchinario`
   ADD CONSTRAINT `Gar->Garanzia.IDGaranzia` FOREIGN KEY (`Gar`) REFERENCES `garanzia` (`IDGaranzia`);
 
 --
+-- Limiti per la tabella `specializzazione`
+--
+ALTER TABLE `specializzazione`
+  ADD CONSTRAINT `Tecnico->DatiLavorativi.IDTecnico` FOREIGN KEY (`Tecnico`) REFERENCES `datilavorativi` (`IDTecnico`);
+
+--
 -- Limiti per la tabella `telcliente`
 --
 ALTER TABLE `telcliente`
@@ -348,7 +375,10 @@ ALTER TABLE `teltecnico`
 -- Limiti per la tabella `ticket`
 --
 ALTER TABLE `ticket`
-  ADD CONSTRAINT `Cliente->Cliente.Partita_IVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`);
+  ADD CONSTRAINT `Cliente->Cliente.Partita_IVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`),
+  ADD CONSTRAINT `Cons->Consumabile.IDConsumabile` FOREIGN KEY (`Cons`) REFERENCES `consumabile` (`IDConsumabile`),
+  ADD CONSTRAINT `Macchina->Macchinario.IDMacchinario` FOREIGN KEY (`Macchina`) REFERENCES `macchinario` (`IDMacchinario`),
+  ADD CONSTRAINT `Tecnico->IDTecnico` FOREIGN KEY (`Tecnico`) REFERENCES `datilavorativi` (`IDTecnico`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Creato il: Dic 08, 2022 alle 16:41
+-- Host: 127.0.0.1
+-- Creato il: Dic 08, 2022 alle 22:54
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -54,67 +54,64 @@ CREATE TABLE `cliente` (
   `Partita_IVA` char(11) NOT NULL,
   `Nome` varchar(20) NOT NULL,
   `Stato` varchar(20) NOT NULL,
-  `Città` varchar(20) DEFAULT NULL,
   `Saldo` char(1) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `cliente`
 --
 
-INSERT INTO `cliente` (`Partita_IVA`, `Nome`, `Stato`, `Città`, `Saldo`) VALUES
-('1', 'Samsung', 'Italia', 'Ancona', '+'),
-('12908626249', 'People Virtual', 'WA', 'Grayland', '-'),
-('14420667758', 'Bell Studio Advanced', 'VA', 'Gate City', '-'),
-('17206371499', 'Signal Graphics Hill', 'PA', 'New Wilmington', '-'),
-('19649871787', 'Systems Contract', 'WY', 'Hartville', '-'),
-('2', 'Apple', 'Inghilterra', 'Londra', '+'),
-('20610916533', 'Industries Construct', 'CA', 'Ludlow', '-'),
-('23591893170', 'Speed Electronic Bel', 'KY', 'Mill Springs', '-'),
-('25563547498', 'Alpha Direct People', 'LA', 'Kenner', '+'),
-('25835035146', 'Speed Building', 'WI', 'Rosholt', '+'),
-('26810986744', 'Adventure Star Telec', 'VA', 'Hampton', '-'),
-('28764426046', 'Building Digital Pac', 'TX', 'Beaumont', '-'),
-('31565014219', 'Max Bell', 'CA', 'Lamont', '-'),
-('38274821545', 'Contract Universal', 'ND', 'Hamberg', '-'),
-('39290760519', 'Industries East', 'WA', 'Moclips', '-'),
-('40425186663', 'Network Interactive ', 'VA', 'Warm Springs', '+'),
-('41659064377', 'Galaxy Software Data', 'VA', 'Norfolk', '+'),
-('45538338992', 'Federated Data Front', 'MO', 'Cape Girardeau', '-'),
-('47109980373', 'Systems Innovation', 'MO', 'Kansas City', '-'),
-('48908898502', 'Telecom Hill Bell', 'NY', 'Freeport', '+'),
-('49577116606', 'Resource Speed', 'CA', 'Sacramento', '-'),
-('49709425815', 'People Electronics A', 'PA', 'Hawley', '-'),
-('52578823020', 'Analysis North Ventu', 'VA', 'Alberta', '+'),
-('53550593649', 'Interactive Electron', 'MO', 'Kansas City', '-'),
-('53849997419', 'Graphics North', 'WI', 'Spring Valley', '+'),
-('54947720751', 'Studio Federated Ele', 'CT', 'Oxford', '-'),
-('55054779156', 'Universal Direct', 'IL', 'Chicago', '-'),
-('58535966610', 'Provider Net', 'VA', 'Village', '+'),
-('62663110407', 'Source Network', 'ME', 'Mars Hill', '-'),
-('68850157424', 'Research Frontier', 'FL', 'New Port Richey', '-'),
-('70119192435', 'Net Technology Consu', 'AL', 'Birmingham', '+'),
-('71161640348', 'East Hardware', 'OK', 'Spavinaw', '-'),
-('71319442662', 'Construction Innovat', 'FL', 'Fort Lauderdale', '+'),
-('71451288455', 'Max Systems', 'TX', 'Stamford', '+'),
-('72353499249', 'Source Omega Source', 'WV', 'Linden', '-'),
-('73045377438', 'Medicine Software In', 'TX', 'Richards', '-'),
-('75273809103', 'Telecom Source Appli', 'TX', 'Point Comfort', '+'),
-('75354714634', 'Electronic Resource ', 'ME', 'Belgrade Lakes', '-'),
-('76402759124', 'Star Construction Fu', 'MI', 'Lansing', '-'),
-('77919318762', 'Provider Constructio', 'NY', 'Earlville', '+'),
-('79969284432', 'Software Frontier An', 'NJ', 'Avon By The Sea', '+'),
-('82123876543', 'East Digital Galaxy', 'CA', 'Arroyo Grande', '-'),
-('82818308998', 'People Frontier Univ', 'IA', 'Manchester', '-'),
-('87104802490', 'Hardware Network Sig', 'MI', 'Muskegon', '-'),
-('87453653758', 'Electronic Net Solut', 'WI', 'Brownsville', '+'),
-('87860400764', 'Resource People Adva', 'CA', 'San Diego', '-'),
-('87946183142', 'Omega Consulting', 'SD', 'Redfield', '-'),
-('88999694482', 'Consulting Atlantic ', 'MD', 'College Park', '-'),
-('89926668970', 'Universal Venture', 'WY', 'Centennial', '-'),
-('96285929991', 'Alpha Building Star', 'SC', 'Blythewood', '+'),
-('97105885088', 'Star Vision Analysis', 'MO', 'Columbia', '+'),
-('99546985285', 'Consulting Research ', 'TN', 'Winchester', '+');
+INSERT INTO `cliente` (`Partita_IVA`, `Nome`, `Stato`, `Saldo`) VALUES
+('10128395405', 'Building Omega Contr', 'China', '-'),
+('14617938604', 'Innovation Studio So', 'Luxembourg', '+'),
+('15268876497', 'Bell Star East', 'France', '-'),
+('16058522218', 'Innovation Atlantic', 'Slovakia', '-'),
+('16497514769', 'Bell Omega Building', 'Denmark', '-'),
+('16735731623', 'Network Atlantic App', 'Portugal', '-'),
+('22174266763', 'Architecture Resourc', 'Croatia', '-'),
+('26041915147', 'Analysis Interactive', 'Slovakia', '-'),
+('26368001629', 'Solutions Frontier V', 'United Kingdom', '+'),
+('26956659580', 'Resource Source Paci', 'Hungary', '-'),
+('28054881706', 'Star Industries Powe', 'Liechtenstein', '-'),
+('31713344653', 'Graphics Max Source', 'UAE', '-'),
+('32142173559', 'Analysis Net', 'UAE', '+'),
+('32871434744', 'Galaxy Electronic', 'Canada', '+'),
+('33315005088', 'Solutions Power', 'Germany', '+'),
+('36144094207', 'Hardware Provider Sp', 'Chad', '+'),
+('41012850653', 'Star Net', 'Croatia', '-'),
+('42454205237', 'Research Net East', 'Czech Republic', '+'),
+('43849287106', 'Systems Interactive', 'Colombia', '+'),
+('45265299447', 'West Construction St', 'Uruguay', '-'),
+('48925706556', 'People Advanced Star', 'Croatia', '+'),
+('49335238861', 'Data Studio Universa', 'Vatican City', '-'),
+('49386669284', 'Analysis Signal Powe', 'Saudi Arabia', '+'),
+('54936494783', 'Studio Provider', 'Turkey', '+'),
+('55429180819', 'General Telecom Fede', 'Bulgaria', '+'),
+('56934816291', 'South Industries Ana', 'India', '+'),
+('65235797314', 'Net Industries Solut', 'Japan', '+'),
+('66098192582', 'Vision Graphics Fede', 'Luxembourg', '+'),
+('68249353645', 'West Pacific Hardwar', 'Israel', '-'),
+('69090775976', 'Advanced Frontier', 'Turkey', '+'),
+('71471551684', 'Construction West Te', 'Belgium', '-'),
+('71475599444', 'Electronic General A', 'South Africa', '-'),
+('72304749147', 'Advanced West Source', 'Taiwan', '-'),
+('73586436589', 'General Telecom Buil', 'Chad', '-'),
+('76091394328', 'Contract Solutions V', 'Mexico', '-'),
+('78989412550', 'Application Contract', 'Canada', '+'),
+('81383350644', 'Universal Telecom Ad', 'Peru', '+'),
+('82026462441', 'Medicine Advanced', 'Indonesia', '-'),
+('83007757185', 'Adventure Direct Gra', 'Luxembourg', '+'),
+('83229080007', 'Research Vision Net', 'Austria', '-'),
+('89167280676', 'Hill Application Uni', 'Turkey', '-'),
+('90452571726', 'Venture Power Data', 'New Zealand', '+'),
+('90523111782', 'Virtual Medicine', 'Morocco', '+'),
+('93269259186', 'Power Medicine Visio', 'Taiwan', '-'),
+('93685664951', 'Analysis Star System', 'Lithuania', '-'),
+('95202775872', 'Consulting Building ', 'Albania', '+'),
+('95890272415', 'Frontier Galaxy Net', 'Estonia', '+'),
+('96799763888', 'Telecom Source Medic', 'Mexico', '+'),
+('97925277933', 'Bell North Pacific', 'New Zealand', '+'),
+('99528944960', 'Hill Net Internet', 'Austria', '+');
 
 -- --------------------------------------------------------
 
@@ -126,7 +123,7 @@ CREATE TABLE `consumabile` (
   `IDConsumabile` int(11) NOT NULL,
   `Categoria` varchar(15) NOT NULL,
   `Prezzo` int(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `consumabile`
@@ -151,7 +148,7 @@ CREATE TABLE `contratto` (
   `Canone` int(4) NOT NULL,
   `Banca` varchar(20) NOT NULL,
   `Cliente` char(11) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `contratto`
@@ -192,7 +189,7 @@ CREATE TABLE `datilavorativi` (
   `IDTecnico` int(4) NOT NULL,
   `Resident` varchar(2) NOT NULL,
   `CF` char(16) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -203,7 +200,7 @@ CREATE TABLE `datilavorativi` (
 CREATE TABLE `emailcliente` (
   `NumCliente` char(11) NOT NULL,
   `Email` varchar(30) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `emailcliente`
@@ -221,7 +218,7 @@ INSERT INTO `emailcliente` (`NumCliente`, `Email`) VALUES
 CREATE TABLE `emailtecnico` (
   `NumTecnico` int(4) NOT NULL,
   `Email` varchar(30) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -253,7 +250,7 @@ CREATE TABLE `macchinario` (
   `IDMacchinario` int(11) NOT NULL,
   `Categoria` varchar(15) NOT NULL,
   `Gar` int(7) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `macchinario`
@@ -315,7 +312,7 @@ CREATE TABLE `ticket` (
   `Macchina` int(11) DEFAULT NULL,
   `Tecnico` int(4) NOT NULL,
   `Cons` int(11) DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indici per le tabelle scaricate
@@ -432,13 +429,13 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT per la tabella `consumabile`
 --
 ALTER TABLE `consumabile`
-  MODIFY `IDConsumabile` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDConsumabile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `contratto`
 --
 ALTER TABLE `contratto`
-  MODIFY `IDContratto` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDContratto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `datilavorativi`
@@ -456,7 +453,7 @@ ALTER TABLE `garanzia`
 -- AUTO_INCREMENT per la tabella `macchinario`
 --
 ALTER TABLE `macchinario`
-  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `ticket`

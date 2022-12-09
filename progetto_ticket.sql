@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 08, 2022 alle 22:54
+-- Creato il: Dic 09, 2022 alle 13:56
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -62,55 +62,55 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`Partita_IVA`, `Nome`, `Stato`, `Saldo`) VALUES
-('10128395405', 'Building Omega Contr', 'China', '-'),
-('14617938604', 'Innovation Studio So', 'Luxembourg', '+'),
+('10128395405', 'Building Omega ', 'China', '-'),
+('14617938604', 'Innovation Studio', 'Italy', '+'),
 ('15268876497', 'Bell Star East', 'France', '-'),
 ('16058522218', 'Innovation Atlantic', 'Slovakia', '-'),
-('16497514769', 'Bell Omega Building', 'Denmark', '-'),
-('16735731623', 'Network Atlantic App', 'Portugal', '-'),
-('22174266763', 'Architecture Resourc', 'Croatia', '-'),
-('26041915147', 'Analysis Interactive', 'Slovakia', '-'),
-('26368001629', 'Solutions Frontier V', 'United Kingdom', '+'),
-('26956659580', 'Resource Source Paci', 'Hungary', '-'),
-('28054881706', 'Star Industries Powe', 'Liechtenstein', '-'),
-('31713344653', 'Graphics Max Source', 'UAE', '-'),
-('32142173559', 'Analysis Net', 'UAE', '+'),
+('16497514769', 'Bell Building', 'Denmark', '-'),
+('16735731623', 'Network Atlantic', 'Portugal', '-'),
+('22174266763', 'Architecture Spa', 'Italy', '-'),
+('26041915147', 'Analysis Interactive', 'Italy', '-'),
+('26368001629', 'Solutions Frontier', 'United Kingdom', '+'),
+('26956659580', 'Resource Team', 'Italy', '-'),
+('28054881706', 'Star Industries', 'USA', '-'),
+('31713344653', 'Graphics Max Source', 'USA', '-'),
+('32142173559', 'Analysis Net', 'USA', '+'),
 ('32871434744', 'Galaxy Electronic', 'Canada', '+'),
 ('33315005088', 'Solutions Power', 'Germany', '+'),
-('36144094207', 'Hardware Provider Sp', 'Chad', '+'),
+('36144094207', 'Hardware Provider', 'Italy', '+'),
 ('41012850653', 'Star Net', 'Croatia', '-'),
 ('42454205237', 'Research Net East', 'Czech Republic', '+'),
-('43849287106', 'Systems Interactive', 'Colombia', '+'),
-('45265299447', 'West Construction St', 'Uruguay', '-'),
-('48925706556', 'People Advanced Star', 'Croatia', '+'),
-('49335238861', 'Data Studio Universa', 'Vatican City', '-'),
-('49386669284', 'Analysis Signal Powe', 'Saudi Arabia', '+'),
+('43849287106', 'Systems Interactive', 'Italy', '+'),
+('45265299447', 'West Construction', 'Italy', '-'),
+('48925706556', 'Samsung Italia', 'Italy', '+'),
+('49335238861', 'Data Studio', 'Vatican City', '-'),
+('49386669284', 'Analysis Signal', 'Saudi Arabia', '+'),
 ('54936494783', 'Studio Provider', 'Turkey', '+'),
-('55429180819', 'General Telecom Fede', 'Bulgaria', '+'),
-('56934816291', 'South Industries Ana', 'India', '+'),
-('65235797314', 'Net Industries Solut', 'Japan', '+'),
-('66098192582', 'Vision Graphics Fede', 'Luxembourg', '+'),
-('68249353645', 'West Pacific Hardwar', 'Israel', '-'),
-('69090775976', 'Advanced Frontier', 'Turkey', '+'),
-('71471551684', 'Construction West Te', 'Belgium', '-'),
-('71475599444', 'Electronic General A', 'South Africa', '-'),
-('72304749147', 'Advanced West Source', 'Taiwan', '-'),
-('73586436589', 'General Telecom Buil', 'Chad', '-'),
-('76091394328', 'Contract Solutions V', 'Mexico', '-'),
+('55429180819', 'General Telecom', 'Italy', '+'),
+('56934816291', 'South Industries', 'India', '+'),
+('65235797314', 'Net Industries', 'Japan', '+'),
+('66098192582', 'Vision Graphics ', 'Luxembourg', '+'),
+('68249353645', 'WestPacific Hardware', 'USA', '-'),
+('69090775976', 'Advanced Frontier', 'Italy', '+'),
+('71471551684', 'ConstructionWest', 'USA', '-'),
+('71475599444', 'Electronic General', 'South Africa', '-'),
+('72304749147', 'Advanced Source', 'Taiwan', '-'),
+('73586436589', 'General Spa', 'Italy', '-'),
+('76091394328', 'Contract Solutions', 'Italy', '-'),
 ('78989412550', 'Application Contract', 'Canada', '+'),
-('81383350644', 'Universal Telecom Ad', 'Peru', '+'),
-('82026462441', 'Medicine Advanced', 'Indonesia', '-'),
-('83007757185', 'Adventure Direct Gra', 'Luxembourg', '+'),
+('81383350644', 'Machine Building', 'Italy', '+'),
+('82026462441', 'Medicine Advanced', 'USA', '-'),
+('83007757185', 'Adventure Direct', 'Luxembourg', '+'),
 ('83229080007', 'Research Vision Net', 'Austria', '-'),
-('89167280676', 'Hill Application Uni', 'Turkey', '-'),
+('89167280676', 'Hill Application', 'Italy', '-'),
 ('90452571726', 'Venture Power Data', 'New Zealand', '+'),
 ('90523111782', 'Virtual Medicine', 'Morocco', '+'),
-('93269259186', 'Power Medicine Visio', 'Taiwan', '-'),
+('93269259186', 'Power Vision', 'Italy', '-'),
 ('93685664951', 'Analysis Star System', 'Lithuania', '-'),
 ('95202775872', 'Consulting Building ', 'Albania', '+'),
 ('95890272415', 'Frontier Galaxy Net', 'Estonia', '+'),
-('96799763888', 'Telecom Source Medic', 'Mexico', '+'),
-('97925277933', 'Bell North Pacific', 'New Zealand', '+'),
+('96799763888', 'Robotics Jons', 'Canada', '+'),
+('97925277933', 'Bell Pacific', 'New Zealand', '+'),
 ('99528944960', 'Hill Net Internet', 'Austria', '+');
 
 -- --------------------------------------------------------
@@ -177,7 +177,14 @@ CREATE TABLE `datianagrafici` (
 --
 
 INSERT INTO `datianagrafici` (`CodiceFiscale`, `Nome`, `Cognome`, `Sesso`, `DataNascita`) VALUES
-('AF11udhedher', 'Andrea', 'Rossi', 'M', '2022-12-07');
+('BNCLRA92R10H501M', 'Laura', 'Bianchi', 'F', '1992-10-10'),
+('CRLGDU93S01G479I', 'Guido', 'Carli', 'M', '1993-11-01'),
+('DLCLSE84C69F839X', 'Elisa', 'Di Luca', 'F', '1984-03-29'),
+('DRGLDA66T19A271W', 'Aldo', 'Draghi', 'M', '1966-12-19'),
+('LGUVRD90M03H501U', 'Luigi', 'Verdi', 'M', '1990-08-03'),
+('RMNFNC74S31E783J', 'Franco', 'Armandi', 'M', '0000-00-00'),
+('RSSMRA78E20F205O', 'Mario', 'Rossi', 'M', '1978-05-20'),
+('TRLNRC96D04G482Z', 'Enrico', 'Tarli', 'M', '1996-04-04');
 
 -- --------------------------------------------------------
 
@@ -190,6 +197,20 @@ CREATE TABLE `datilavorativi` (
   `Resident` varchar(2) NOT NULL,
   `CF` char(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `datilavorativi`
+--
+
+INSERT INTO `datilavorativi` (`IDTecnico`, `Resident`, `CF`) VALUES
+(2, 'si', 'CRLGDU93S01G479I'),
+(3, 'no', 'BNCLRA92R10H501M'),
+(4, 'no', 'DLCLSE84C69F839X'),
+(5, 'si', 'LGUVRD90M03H501U'),
+(6, 'si', 'DRGLDA66T19A271W'),
+(7, 'no', 'RMNFNC74S31E783J'),
+(8, 'si', 'RSSMRA78E20F205O'),
+(9, 'si', 'TRLNRC96D04G482Z');
 
 -- --------------------------------------------------------
 
@@ -441,7 +462,7 @@ ALTER TABLE `contratto`
 -- AUTO_INCREMENT per la tabella `datilavorativi`
 --
 ALTER TABLE `datilavorativi`
-  MODIFY `IDTecnico` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDTecnico` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `garanzia`

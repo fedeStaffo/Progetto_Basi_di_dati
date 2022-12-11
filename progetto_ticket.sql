@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 09, 2022 alle 13:56
+-- Creato il: Dic 11, 2022 alle 16:22
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -62,17 +62,17 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`Partita_IVA`, `Nome`, `Stato`, `Saldo`) VALUES
-('10128395405', 'Building Omega ', 'China', '-'),
+('10128395405', 'Building Omega ', 'China', '+'),
 ('14617938604', 'Innovation Studio', 'Italy', '+'),
-('15268876497', 'Bell Star East', 'France', '-'),
-('16058522218', 'Innovation Atlantic', 'Slovakia', '-'),
-('16497514769', 'Bell Building', 'Denmark', '-'),
+('15268876497', 'Bell Star East', 'France', '+'),
+('16058522218', 'Innovation Atlantic', 'Slovakia', '+'),
+('16497514769', 'Bell Building', 'Denmark', '+'),
 ('16735731623', 'Network Atlantic', 'Portugal', '-'),
-('22174266763', 'Architecture Spa', 'Italy', '-'),
+('22174266763', 'Architecture Spa', 'Italy', '+'),
 ('26041915147', 'Analysis Interactive', 'Italy', '-'),
 ('26368001629', 'Solutions Frontier', 'United Kingdom', '+'),
 ('26956659580', 'Resource Team', 'Italy', '-'),
-('28054881706', 'Star Industries', 'USA', '-'),
+('28054881706', 'Stark Industries', 'USA', '+'),
 ('31713344653', 'Graphics Max Source', 'USA', '-'),
 ('32142173559', 'Analysis Net', 'USA', '+'),
 ('32871434744', 'Galaxy Electronic', 'Canada', '+'),
@@ -95,8 +95,8 @@ INSERT INTO `cliente` (`Partita_IVA`, `Nome`, `Stato`, `Saldo`) VALUES
 ('71471551684', 'ConstructionWest', 'USA', '-'),
 ('71475599444', 'Electronic General', 'South Africa', '-'),
 ('72304749147', 'Advanced Source', 'Taiwan', '-'),
-('73586436589', 'General Spa', 'Italy', '-'),
-('76091394328', 'Contract Solutions', 'Italy', '-'),
+('73586436589', 'General Spa', 'Italy', '+'),
+('76091394328', 'Contract Solutions', 'Italy', '+'),
 ('78989412550', 'Application Contract', 'Canada', '+'),
 ('81383350644', 'Machine Building', 'Italy', '+'),
 ('82026462441', 'Medicine Advanced', 'USA', '-'),
@@ -155,8 +155,22 @@ CREATE TABLE `contratto` (
 --
 
 INSERT INTO `contratto` (`IDContratto`, `DataInizio`, `DataFine`, `Canone`, `Banca`, `Cliente`) VALUES
-(1, '2022-12-07', '2022-12-08', 200, 'Carifermo', '1'),
-(4, '2022-12-07', '2022-12-28', 100, 'Carifermo', '2');
+(1, '2020-03-14', '2023-03-14', 800, 'National Bank', '15268876497'),
+(2, '2020-05-29', '2023-05-29', 1000, 'Credit Union', '16058522218'),
+(3, '2020-09-01', '2023-09-01', 400, 'Evolution Bancorp', '16497514769'),
+(4, '2020-12-20', '2023-12-20', 7000, 'Apex Bank', '16735731623'),
+(5, '2020-12-29', '2020-12-29', 8500, 'Premium Bank', '22174266763'),
+(6, '2020-12-30', '2023-12-30', 3000, 'Premium Bank', '26041915147'),
+(15, '2022-12-11', '2025-12-11', 300, 'China Bank', '10128395405'),
+(16, '2022-08-09', '2025-08-09', 500, 'Intesa Sanpaolo', '14617938604'),
+(17, '2021-01-02', '2024-01-02', 200, 'Premium Bank', '31713344653'),
+(18, '2021-01-05', '2024-01-05', 4000, 'Premium Bank', '83007757185'),
+(19, '2021-02-03', '2024-02-03', 1500, 'Capital Trust', '32142173559'),
+(20, '2021-02-10', '2024-02-10', 150, 'Capital Trust', '82026462441'),
+(21, '2021-03-05', '2024-03-05', 3700, 'Flow Banks', '43849287106'),
+(22, '2021-03-13', '2024-03-13', 2500, 'Flow Banks', '90452571726'),
+(23, '2021-04-18', '2024-04-18', 8500, 'Miracle Bank', '71471551684'),
+(24, '2021-04-20', '2021-04-20', 9000, 'Miracle Bank', '55429180819');
 
 -- --------------------------------------------------------
 
@@ -182,7 +196,7 @@ INSERT INTO `datianagrafici` (`CodiceFiscale`, `Nome`, `Cognome`, `Sesso`, `Data
 ('DLCLSE84C69F839X', 'Elisa', 'Di Luca', 'F', '1984-03-29'),
 ('DRGLDA66T19A271W', 'Aldo', 'Draghi', 'M', '1966-12-19'),
 ('LGUVRD90M03H501U', 'Luigi', 'Verdi', 'M', '1990-08-03'),
-('RMNFNC74S31E783J', 'Franco', 'Armandi', 'M', '0000-00-00'),
+('RMNFNC74S31E783J', 'Franco', 'Armandi', 'M', '1983-10-05'),
 ('RSSMRA78E20F205O', 'Mario', 'Rossi', 'M', '1978-05-20'),
 ('TRLNRC96D04G482Z', 'Enrico', 'Tarli', 'M', '1996-04-04');
 
@@ -203,14 +217,14 @@ CREATE TABLE `datilavorativi` (
 --
 
 INSERT INTO `datilavorativi` (`IDTecnico`, `Resident`, `CF`) VALUES
+(1, 'si', 'TRLNRC96D04G482Z'),
 (2, 'si', 'CRLGDU93S01G479I'),
 (3, 'no', 'BNCLRA92R10H501M'),
 (4, 'no', 'DLCLSE84C69F839X'),
 (5, 'si', 'LGUVRD90M03H501U'),
 (6, 'si', 'DRGLDA66T19A271W'),
 (7, 'no', 'RMNFNC74S31E783J'),
-(8, 'si', 'RSSMRA78E20F205O'),
-(9, 'si', 'TRLNRC96D04G482Z');
+(8, 'si', 'RSSMRA78E20F205O');
 
 -- --------------------------------------------------------
 
@@ -228,7 +242,55 @@ CREATE TABLE `emailcliente` (
 --
 
 INSERT INTO `emailcliente` (`NumCliente`, `Email`) VALUES
-('1', 'ciao@ciao.com');
+('10128395405', 'buildingomega@gmail.com'),
+('14617938604', 'studioinn@virgilio.it'),
+('15268876497', 'bellstar@gmail.com'),
+('16058522218', 'atlanticinn@gmail.com'),
+('16497514769', 'bellbuilding@gmail.com'),
+('16735731623', 'atlnet@gmail.com'),
+('22174266763', 'archspa@libero.it'),
+('26368001629', 'analisispa@virgilio.it'),
+('26368001629', 'solfrontier@gmail.com'),
+('26956659580', 'resteam@yahoo.it'),
+('28054881706', 'starind@gmail.com'),
+('31713344653', 'graphspa@gmail.com'),
+('32142173559', 'analisysnet@gmail.com'),
+('32871434744', 'galaxyel@gmail.com'),
+('33315005088', 'solpow@gmail.com'),
+('36144094207', 'hardwareita@virgilio.it'),
+('41012850653', 'starnet@gmail.com'),
+('42454205237', 'resnet@gmail.com'),
+('43849287106', 'interactivesist@alice.it'),
+('45265299447', 'wconst@libero.it'),
+('48925706556', 'samsungitaly@gmail.com'),
+('49335238861', 'datastudio@libero.it'),
+('49386669284', 'ansign@gmail.com'),
+('55429180819', 'providerstudio@gmail.com'),
+('55429180819', 'telecomit@gmail.com'),
+('56934816291', 'southind@gmail.com'),
+('65235797314', 'netind@gmail.com'),
+('66098192582', 'visiongraph@gmail.com'),
+('68249353645', 'hardwarewest@gmail.com'),
+('69090775976', 'advfrontier@gmail.com'),
+('71471551684', 'constrwest@gmail.com'),
+('71475599444', 'electgeneral@gmail.com'),
+('72304749147', 'advsource@gmail.com'),
+('73586436589', 'generalita@alice.it'),
+('76091394328', 'contractsol@virgilio.it'),
+('78989412550', 'appcontr@gmail.com'),
+('81383350644', 'medbuildspa@gmail.com'),
+('82026462441', 'medspa@gmail.com'),
+('83007757185', 'adventurspa@gmail.com'),
+('83229080007', 'resvision@gmail.com'),
+('89167280676', 'hillapp@alice.it'),
+('90452571726', 'venturepow@gmail.com'),
+('90523111782', 'powvision@virgilio.it'),
+('93269259186', 'starsystem@gmail.com'),
+('95202775872', 'consbuilding@gmail.com'),
+('95890272415', 'frontiergalaxy@gmail.com'),
+('96799763888', 'roboticsjohns@gmail.com'),
+('97925277933', 'bellpacific@gmail.com'),
+('99528944960', 'hnet@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -330,9 +392,7 @@ CREATE TABLE `ticket` (
   `Chiusura` date DEFAULT NULL,
   `OreImpiegate` int(4) DEFAULT NULL,
   `Cliente` char(11) NOT NULL,
-  `Macchina` int(11) DEFAULT NULL,
-  `Tecnico` int(4) NOT NULL,
-  `Cons` int(11) DEFAULT NULL
+  `Macchina` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -438,8 +498,6 @@ ALTER TABLE `teltecnico`
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`IDTicket`),
   ADD KEY `Macchina->Macchinario.IDMacchinario` (`Macchina`),
-  ADD KEY `Cons->Consumabile.IDConsumabile` (`Cons`),
-  ADD KEY `Tecnico->IDTecnico` (`Tecnico`),
   ADD KEY `Cliente->Cliente.Partita_IVA` (`Cliente`);
 
 --
@@ -456,7 +514,7 @@ ALTER TABLE `consumabile`
 -- AUTO_INCREMENT per la tabella `contratto`
 --
 ALTER TABLE `contratto`
-  MODIFY `IDContratto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IDContratto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT per la tabella `datilavorativi`
@@ -554,9 +612,7 @@ ALTER TABLE `teltecnico`
 --
 ALTER TABLE `ticket`
   ADD CONSTRAINT `Cliente->Cliente.Partita_IVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`),
-  ADD CONSTRAINT `Cons->Consumabile.IDConsumabile` FOREIGN KEY (`Cons`) REFERENCES `consumabile` (`IDConsumabile`),
-  ADD CONSTRAINT `Macchina->Macchinario.IDMacchinario` FOREIGN KEY (`Macchina`) REFERENCES `macchinario` (`IDMacchinario`),
-  ADD CONSTRAINT `Tecnico->IDTecnico` FOREIGN KEY (`Tecnico`) REFERENCES `datilavorativi` (`IDTecnico`);
+  ADD CONSTRAINT `Macchina->Macchinario.IDMacchinario` FOREIGN KEY (`Macchina`) REFERENCES `macchinario` (`IDMacchinario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

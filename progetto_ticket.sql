@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Dic 11, 2022 alle 18:06
+-- Host: 127.0.0.1:3308
+-- Creato il: Dic 12, 2022 alle 12:36
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -368,7 +368,45 @@ CREATE TABLE `garanzia` (
 
 INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`) VALUES
 (1, '2022-12-07', 'Ancona'),
-(2, '2022-12-07', 'Fermo');
+(2, '2022-12-07', 'Fermo'),
+(3, '2020-09-25', 'Northville'),
+(4, '2014-03-02', 'Arlington'),
+(5, '2020-12-07', 'Bucklin'),
+(6, '2021-12-16', 'Sykeston'),
+(7, '2018-06-08', 'Watford City'),
+(8, '2013-01-19', 'Keene'),
+(9, '2014-09-26', 'Joseph'),
+(10, '2018-05-06', 'Wichita'),
+(11, '2014-03-24', 'Las Vegas'),
+(12, '2014-08-13', 'Londonderry'),
+(13, '2013-06-05', 'Macdoel'),
+(14, '2020-10-07', 'Springfield'),
+(15, '2019-10-08', 'Bellville'),
+(16, '2021-07-26', 'Saint Leo'),
+(17, '2020-05-10', 'Marshfield'),
+(18, '2021-08-09', 'Agra'),
+(19, '2019-12-10', 'Reads Landing'),
+(20, '2016-01-07', 'Daleville'),
+(21, '2016-07-29', 'Coolidge'),
+(22, '2019-07-04', 'Porter Corners'),
+(23, '2018-10-23', 'Orlando'),
+(24, '2021-10-16', 'Cranberry Twp'),
+(25, '2014-05-17', 'Uvalde'),
+(26, '2013-09-10', 'Viola'),
+(27, '2014-12-12', 'Wayside'),
+(28, '2017-01-31', 'Willcox'),
+(29, '2013-09-03', 'Withee'),
+(30, '2021-06-23', 'Stanford'),
+(31, '2022-10-22', 'Cedar'),
+(32, '2015-11-01', 'Sutherlin'),
+(33, '2015-07-28', 'Kenner'),
+(34, '2018-10-03', 'Vero Beach'),
+(35, '2020-08-19', 'Havre'),
+(36, '2018-03-17', 'Verplanck'),
+(37, '2019-04-15', 'Saint Petersburg'),
+(38, '2017-03-18', 'Wynne'),
+(39, '2022-11-22', 'Rudolph'),
+(40, '2020-03-26', 'Idaho Falls');
 
 -- --------------------------------------------------------
 
@@ -388,7 +426,45 @@ CREATE TABLE `macchinario` (
 
 INSERT INTO `macchinario` (`IDMacchinario`, `Categoria`, `Gar`) VALUES
 (1, 'Kombo TH', 1),
-(2, 'kombo tav', 2);
+(2, 'kombo tav', 2),
+(5, 'Kombo TAV', 4),
+(6, 'Spark', 27),
+(7, 'Kombo TH', 19),
+(8, 'Kombo STC', 10),
+(9, 'Booster', 9),
+(10, 'Spark', 14),
+(11, 'Kombo TAV', 26),
+(12, 'Kombo STC', 11),
+(13, 'Booster', 16),
+(14, 'Spark', 7),
+(15, 'Spark', 20),
+(16, 'Kombo TH', 6),
+(17, 'Kombo TAV', 8),
+(18, 'Spark', 25),
+(21, 'Kombo TH', 18),
+(22, 'Booster', 3),
+(25, 'Kombo TAV', 15),
+(26, 'Spark', 24),
+(29, 'Spark', 21),
+(30, 'Kombo STC', 23),
+(39, 'Kombo TH', 5),
+(40, 'Booster', 22),
+(41, 'Spark', 13),
+(42, 'Kombo STC', 12),
+(44, 'Kombo TAV', 17),
+(53, 'Booster', 32),
+(54, 'Kombo STC', 28),
+(55, 'Kombo TH', 37),
+(56, 'Kombo STC', 29),
+(57, 'Kombo TAV', 30),
+(58, 'Kombo TH', 34),
+(59, 'Kombo TAV', 36),
+(60, 'Booster', 33),
+(63, 'Spark', 31),
+(64, 'Kombo STC', 35),
+(70, 'Kombo TAV', 40),
+(71, 'Booster', 38),
+(72, 'Kombo STC', 39);
 
 -- --------------------------------------------------------
 
@@ -655,13 +731,13 @@ ALTER TABLE `datilavorativi`
 -- AUTO_INCREMENT per la tabella `garanzia`
 --
 ALTER TABLE `garanzia`
-  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT per la tabella `macchinario`
 --
 ALTER TABLE `macchinario`
-  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT per la tabella `ticket`
@@ -684,7 +760,7 @@ ALTER TABLE `assistenzacons`
 -- Limiti per la tabella `assistenzamacc`
 --
 ALTER TABLE `assistenzamacc`
-  ADD CONSTRAINT `Macchina->Macchinario.ID_Macchinario` FOREIGN KEY (`Macchina`) REFERENCES `macchinario` (`IDMacchinario`),
+  ADD CONSTRAINT `Macchina->Macchinario.IDMacchinario` FOREIGN KEY (`Macchina`) REFERENCES `macchinario` (`IDMacchinario`),
   ADD CONSTRAINT `Tecnico->DatiLavorativi.ID_Tecnico` FOREIGN KEY (`Tecnico`) REFERENCES `datilavorativi` (`IDTecnico`),
   ADD CONSTRAINT `Ticket->Ticket.IDTicket` FOREIGN KEY (`Ticket`) REFERENCES `ticket` (`IDTicket`);
 
@@ -741,7 +817,7 @@ ALTER TABLE `teltecnico`
 --
 ALTER TABLE `ticket`
   ADD CONSTRAINT `Cliente->Cliente.Partita_IVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`),
-  ADD CONSTRAINT `Macchina->Macchinario.IDMacchinario` FOREIGN KEY (`Macchina`) REFERENCES `macchinario` (`IDMacchinario`);
+  ADD CONSTRAINT `Macchina->Macchinario.ID_Macchinario` FOREIGN KEY (`Macchina`) REFERENCES `macchinario` (`IDMacchinario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

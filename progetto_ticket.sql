@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Creato il: Dic 12, 2022 alle 12:36
+-- Creato il: Dic 15, 2022 alle 16:16
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -41,7 +41,8 @@ CREATE TABLE `assistenzacons` (
 CREATE TABLE `assistenzamacc` (
   `Ticket` int(10) NOT NULL,
   `Macchina` int(11) NOT NULL,
-  `Tecnico` int(4) NOT NULL
+  `Tecnico` int(4) NOT NULL,
+  `NumOre` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -359,54 +360,56 @@ INSERT INTO `emailtecnico` (`NumTecnico`, `Email`) VALUES
 CREATE TABLE `garanzia` (
   `IDGaranzia` int(7) NOT NULL,
   `DataInstallazione` date NOT NULL DEFAULT current_timestamp(),
-  `LuogoInstallazione` varchar(20) NOT NULL
+  `LuogoInstallazione` varchar(20) NOT NULL,
+  `Scadenza` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `garanzia`
 --
 
-INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`) VALUES
-(1, '2022-12-07', 'Ancona'),
-(2, '2022-12-07', 'Fermo'),
-(3, '2020-09-25', 'Northville'),
-(4, '2014-03-02', 'Arlington'),
-(5, '2020-12-07', 'Bucklin'),
-(6, '2021-12-16', 'Sykeston'),
-(7, '2018-06-08', 'Watford City'),
-(8, '2013-01-19', 'Keene'),
-(9, '2014-09-26', 'Joseph'),
-(10, '2018-05-06', 'Wichita'),
-(11, '2014-03-24', 'Las Vegas'),
-(12, '2014-08-13', 'Londonderry'),
-(13, '2013-06-05', 'Macdoel'),
-(14, '2020-10-07', 'Springfield'),
-(15, '2019-10-08', 'Bellville'),
-(16, '2021-07-26', 'Saint Leo'),
-(17, '2020-05-10', 'Marshfield'),
-(18, '2021-08-09', 'Agra'),
-(19, '2019-12-10', 'Reads Landing'),
-(20, '2016-01-07', 'Daleville'),
-(21, '2016-07-29', 'Coolidge'),
-(22, '2019-07-04', 'Porter Corners'),
-(23, '2018-10-23', 'Orlando'),
-(24, '2021-10-16', 'Cranberry Twp'),
-(25, '2014-05-17', 'Uvalde'),
-(26, '2013-09-10', 'Viola'),
-(27, '2014-12-12', 'Wayside'),
-(28, '2017-01-31', 'Willcox'),
-(29, '2013-09-03', 'Withee'),
-(30, '2021-06-23', 'Stanford'),
-(31, '2022-10-22', 'Cedar'),
-(32, '2015-11-01', 'Sutherlin'),
-(33, '2015-07-28', 'Kenner'),
-(34, '2018-10-03', 'Vero Beach'),
-(35, '2020-08-19', 'Havre'),
-(36, '2018-03-17', 'Verplanck'),
-(37, '2019-04-15', 'Saint Petersburg'),
-(38, '2017-03-18', 'Wynne'),
-(39, '2022-11-22', 'Rudolph'),
-(40, '2020-03-26', 'Idaho Falls');
+INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`, `Scadenza`) VALUES
+(1, '2022-12-07', 'Ancona', NULL),
+(2, '2022-12-07', 'Fermo', NULL),
+(3, '2020-09-25', 'Northville', NULL),
+(4, '2014-03-02', 'Arlington', NULL),
+(5, '2020-12-07', 'Bucklin', NULL),
+(6, '2021-12-16', 'Sykeston', NULL),
+(7, '2018-06-08', 'Watford City', NULL),
+(8, '2013-01-19', 'Keene', NULL),
+(9, '2014-09-26', 'Joseph', NULL),
+(10, '2018-05-06', 'Wichita', NULL),
+(11, '2014-03-24', 'Las Vegas', NULL),
+(12, '2014-08-13', 'Londonderry', NULL),
+(13, '2013-06-05', 'Macdoel', NULL),
+(14, '2020-10-07', 'Springfield', NULL),
+(15, '2019-10-08', 'Bellville', NULL),
+(16, '2021-07-26', 'Saint Leo', NULL),
+(17, '2020-05-10', 'Marshfield', NULL),
+(18, '2021-08-09', 'Agra', NULL),
+(19, '2019-12-10', 'Reads Landing', NULL),
+(20, '2016-01-07', 'Daleville', NULL),
+(21, '2016-07-29', 'Coolidge', NULL),
+(22, '2019-07-04', 'Porter Corners', NULL),
+(23, '2018-10-23', 'Orlando', NULL),
+(24, '2021-10-16', 'Cranberry Twp', NULL),
+(25, '2014-05-17', 'Uvalde', NULL),
+(26, '2013-09-10', 'Viola', NULL),
+(27, '2014-12-12', 'Wayside', NULL),
+(28, '2017-01-31', 'Willcox', NULL),
+(29, '2013-09-03', 'Withee', NULL),
+(30, '2021-06-23', 'Stanford', NULL),
+(31, '2022-10-22', 'Cedar', NULL),
+(32, '2015-11-01', 'Sutherlin', NULL),
+(33, '2015-07-28', 'Kenner', NULL),
+(34, '2018-10-03', 'Vero Beach', NULL),
+(35, '2020-08-19', 'Havre', NULL),
+(36, '2018-03-17', 'Verplanck', NULL),
+(37, '2019-04-15', 'Saint Petersburg', NULL),
+(38, '2017-03-18', 'Wynne', NULL),
+(39, '2022-11-22', 'Rudolph', NULL),
+(40, '2020-03-26', 'Idaho Falls', NULL),
+(41, '2022-12-15', 'Milano', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -596,9 +599,15 @@ CREATE TABLE `ticket` (
   `Apertura` date NOT NULL DEFAULT current_timestamp(),
   `Chiusura` date DEFAULT NULL,
   `OreImpiegate` int(4) DEFAULT NULL,
-  `Cliente` char(11) NOT NULL,
-  `Macchina` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `Cliente` char(11) NOT NULL
+) ;
+
+--
+-- Dump dei dati per la tabella `ticket`
+--
+
+INSERT INTO `ticket` (`IDTicket`, `Causale`, `Priorita`, `Lingua`, `Costo`, `Apertura`, `Chiusura`, `OreImpiegate`, `Cliente`) VALUES
+(1, 'Consumabili', 'Alta', 'Italiano', NULL, '2022-12-15', NULL, NULL, '10128395405');
 
 --
 -- Indici per le tabelle scaricate
@@ -702,7 +711,6 @@ ALTER TABLE `teltecnico`
 --
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`IDTicket`),
-  ADD KEY `Macchina->Macchinario.IDMacchinario` (`Macchina`),
   ADD KEY `Cliente->Cliente.Partita_IVA` (`Cliente`);
 
 --
@@ -731,7 +739,7 @@ ALTER TABLE `datilavorativi`
 -- AUTO_INCREMENT per la tabella `garanzia`
 --
 ALTER TABLE `garanzia`
-  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT per la tabella `macchinario`
@@ -816,8 +824,7 @@ ALTER TABLE `teltecnico`
 -- Limiti per la tabella `ticket`
 --
 ALTER TABLE `ticket`
-  ADD CONSTRAINT `Cliente->Cliente.Partita_IVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`),
-  ADD CONSTRAINT `Macchina->Macchinario.ID_Macchinario` FOREIGN KEY (`Macchina`) REFERENCES `macchinario` (`IDMacchinario`);
+  ADD CONSTRAINT `Cliente->Cliente.Partita_IVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

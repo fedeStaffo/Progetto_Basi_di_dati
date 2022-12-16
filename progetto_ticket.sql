@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Creato il: Dic 15, 2022 alle 16:16
+-- Creato il: Dic 16, 2022 alle 17:41
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -24,6 +24,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `acquistomacc`
+--
+
+CREATE TABLE `acquistomacc` (
+  `Cliente` char(11) NOT NULL,
+  `Macchinario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `acquistomacc`
+--
+
+INSERT INTO `acquistomacc` (`Cliente`, `Macchinario`) VALUES
+('10128395405', 16),
+('16497514769', 6),
+('22174266763', 60),
+('26368001629', 21),
+('26368001629', 40),
+('28054881706', 26),
+('28054881706', 64),
+('31713344653', 53),
+('32142173559', 5),
+('32142173559', 70),
+('32871434744', 39),
+('32871434744', 71),
+('33315005088', 13),
+('33315005088', 14),
+('49335238861', 41),
+('49386669284', 1),
+('49386669284', 44),
+('54936494783', 54),
+('65235797314', 72),
+('71471551684', 57),
+('78989412550', 22),
+('83007757185', 55),
+('83229080007', 10),
+('89167280676', 63),
+('93269259186', 59),
+('96799763888', 15),
+('97925277933', 8),
+('97925277933', 58);
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `assistenzacons`
 --
 
@@ -31,6 +76,17 @@ CREATE TABLE `assistenzacons` (
   `Ticket` int(10) NOT NULL,
   `Cons` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `assistenzacons`
+--
+
+INSERT INTO `assistenzacons` (`Ticket`, `Cons`) VALUES
+(1, 18),
+(5, 11),
+(6, 3),
+(9, 7),
+(9, 20);
 
 -- --------------------------------------------------------
 
@@ -44,6 +100,21 @@ CREATE TABLE `assistenzamacc` (
   `Tecnico` int(4) NOT NULL,
   `NumOre` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `assistenzamacc`
+--
+
+INSERT INTO `assistenzamacc` (`Ticket`, `Macchina`, `Tecnico`, `NumOre`) VALUES
+(10, 41, 8, NULL),
+(11, 57, 5, 15),
+(12, 6, 8, NULL),
+(13, 41, 8, NULL),
+(14, 71, 1, NULL),
+(15, 54, 2, NULL),
+(17, 55, 6, NULL),
+(18, 41, 1, NULL),
+(19, 6, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -135,12 +206,12 @@ INSERT INTO `consumabile` (`IDConsumabile`, `Categoria`, `Prezzo`) VALUES
 (2, 'Lampade', 25),
 (3, 'Lampade', 25),
 (4, 'Penne', 20),
-(5, 'Punzoni', 20),
+(5, 'Punzoni', 40),
 (6, 'Frese', 18),
 (7, 'Penne', 20),
-(8, 'Punzoni', 20),
+(8, 'Punzoni', 40),
 (9, 'Frese', 18),
-(10, 'Punzoni', 18),
+(10, 'Punzoni', 40),
 (11, 'PC', 300),
 (12, 'Lame di taglio', 100),
 (13, 'PC', 300),
@@ -150,7 +221,8 @@ INSERT INTO `consumabile` (`IDConsumabile`, `Categoria`, `Prezzo`) VALUES
 (17, 'Lampade', 25),
 (18, 'Fustelle', 30),
 (19, 'Penne', 20),
-(20, 'Feltri', 15);
+(20, 'Feltri', 15),
+(21, 'Feltri', 15);
 
 -- --------------------------------------------------------
 
@@ -369,47 +441,47 @@ CREATE TABLE `garanzia` (
 --
 
 INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`, `Scadenza`) VALUES
-(1, '2022-12-07', 'Ancona', NULL),
-(2, '2022-12-07', 'Fermo', NULL),
-(3, '2020-09-25', 'Northville', NULL),
-(4, '2014-03-02', 'Arlington', NULL),
-(5, '2020-12-07', 'Bucklin', NULL),
-(6, '2021-12-16', 'Sykeston', NULL),
-(7, '2018-06-08', 'Watford City', NULL),
-(8, '2013-01-19', 'Keene', NULL),
-(9, '2014-09-26', 'Joseph', NULL),
-(10, '2018-05-06', 'Wichita', NULL),
-(11, '2014-03-24', 'Las Vegas', NULL),
-(12, '2014-08-13', 'Londonderry', NULL),
-(13, '2013-06-05', 'Macdoel', NULL),
-(14, '2020-10-07', 'Springfield', NULL),
-(15, '2019-10-08', 'Bellville', NULL),
-(16, '2021-07-26', 'Saint Leo', NULL),
-(17, '2020-05-10', 'Marshfield', NULL),
-(18, '2021-08-09', 'Agra', NULL),
-(19, '2019-12-10', 'Reads Landing', NULL),
-(20, '2016-01-07', 'Daleville', NULL),
-(21, '2016-07-29', 'Coolidge', NULL),
-(22, '2019-07-04', 'Porter Corners', NULL),
-(23, '2018-10-23', 'Orlando', NULL),
-(24, '2021-10-16', 'Cranberry Twp', NULL),
-(25, '2014-05-17', 'Uvalde', NULL),
-(26, '2013-09-10', 'Viola', NULL),
-(27, '2014-12-12', 'Wayside', NULL),
-(28, '2017-01-31', 'Willcox', NULL),
-(29, '2013-09-03', 'Withee', NULL),
-(30, '2021-06-23', 'Stanford', NULL),
-(31, '2022-10-22', 'Cedar', NULL),
-(32, '2015-11-01', 'Sutherlin', NULL),
-(33, '2015-07-28', 'Kenner', NULL),
-(34, '2018-10-03', 'Vero Beach', NULL),
-(35, '2020-08-19', 'Havre', NULL),
-(36, '2018-03-17', 'Verplanck', NULL),
-(37, '2019-04-15', 'Saint Petersburg', NULL),
-(38, '2017-03-18', 'Wynne', NULL),
-(39, '2022-11-22', 'Rudolph', NULL),
-(40, '2020-03-26', 'Idaho Falls', NULL),
-(41, '2022-12-15', 'Milano', '0000-00-00');
+(1, '2022-12-07', 'Ancona', '2023-12-07'),
+(2, '2022-12-07', 'Fermo', '2023-12-07'),
+(3, '2020-09-25', 'Northville', '2021-09-25'),
+(4, '2014-03-02', 'Arlington', '2015-03-02'),
+(5, '2020-12-07', 'Bucklin', '2021-12-07'),
+(6, '2021-12-16', 'Sykeston', '2022-12-16'),
+(7, '2018-06-08', 'Watford City', '2019-06-08'),
+(8, '2013-01-19', 'Keene', '2014-01-19'),
+(9, '2014-09-26', 'Joseph', '2015-09-26'),
+(10, '2018-05-06', 'Wichita', '2019-05-06'),
+(11, '2014-03-24', 'Las Vegas', '2015-03-24'),
+(12, '2014-08-13', 'Londonderry', '2015-08-13'),
+(13, '2013-06-05', 'Macdoel', '2014-06-05'),
+(14, '2020-10-07', 'Springfield', '2021-10-07'),
+(15, '2019-10-08', 'Bellville', '2020-10-08'),
+(16, '2021-07-26', 'Saint Leo', '2022-07-26'),
+(17, '2020-05-10', 'Marshfield', '2021-05-10'),
+(18, '2021-08-09', 'Agra', '2022-08-09'),
+(19, '2019-12-10', 'Reads Landing', '2020-12-10'),
+(20, '2016-01-07', 'Daleville', '2017-01-07'),
+(21, '2016-07-29', 'Coolidge', '2017-07-29'),
+(22, '2019-07-04', 'Porter Corners', '2020-07-04'),
+(23, '2018-10-23', 'Orlando', '2019-10-23'),
+(24, '2021-10-16', 'Cranberry Twp', '2022-10-16'),
+(25, '2014-05-17', 'Uvalde', '2015-05-17'),
+(26, '2013-09-10', 'Viola', '2014-09-10'),
+(27, '2014-12-12', 'Wayside', '2015-12-12'),
+(28, '2017-01-31', 'Willcox', '2018-01-31'),
+(29, '2013-09-03', 'Withee', '2014-09-03'),
+(30, '2021-06-23', 'Stanford', '2022-06-23'),
+(31, '2022-10-22', 'Cedar', '2023-10-22'),
+(32, '2015-11-01', 'Sutherlin', '2016-11-01'),
+(33, '2015-07-28', 'Kenner', '2016-07-28'),
+(34, '2018-10-03', 'Vero Beach', '2019-10-03'),
+(35, '2020-08-19', 'Havre', '2021-08-19'),
+(36, '2018-03-17', 'Verplanck', '2019-03-17'),
+(37, '2019-04-15', 'Saint Petersburg', '2020-04-15'),
+(38, '2017-03-18', 'Wynne', '2018-03-18'),
+(39, '2022-11-22', 'Rudolph', '2023-11-22'),
+(40, '2020-03-26', 'Idaho Falls', '2021-03-26'),
+(41, '2022-12-15', 'Milano', '2023-12-15');
 
 -- --------------------------------------------------------
 
@@ -584,6 +656,27 @@ CREATE TABLE `teltecnico` (
   `Telefono` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `teltecnico`
+--
+
+INSERT INTO `teltecnico` (`NumTecnico`, `Telefono`) VALUES
+(1, '+395171085871'),
+(1, '+396149276258'),
+(2, '+391666957717'),
+(2, '+394952738127'),
+(3, '+397065834566'),
+(3, '+398364180032'),
+(4, '+391010743010'),
+(4, '+395474243083'),
+(5, '+391250995336'),
+(6, '+391899270130'),
+(7, '+390264624835'),
+(7, '+390750958932'),
+(7, '+397270167373'),
+(8, '+392333470968'),
+(8, '+396096706240');
+
 -- --------------------------------------------------------
 
 --
@@ -600,25 +693,50 @@ CREATE TABLE `ticket` (
   `Chiusura` date DEFAULT NULL,
   `OreImpiegate` int(4) DEFAULT NULL,
   `Cliente` char(11) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `ticket`
 --
 
 INSERT INTO `ticket` (`IDTicket`, `Causale`, `Priorita`, `Lingua`, `Costo`, `Apertura`, `Chiusura`, `OreImpiegate`, `Cliente`) VALUES
-(1, 'Consumabili', 'Alta', 'Italiano', NULL, '2022-12-15', NULL, NULL, '10128395405');
+(1, 'Consumabili', 'Alta', 'Inglese', 30, '2022-12-15', '2022-12-15', 0, '10128395405'),
+(2, 'Fotocamere', 'Bloccata', 'Italiano', NULL, '2022-12-15', NULL, NULL, '26956659580'),
+(4, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2022-10-11', NULL, NULL, '72304749147'),
+(5, 'Consumabili', 'Alta', 'Inglese', 300, '2019-12-05', '2019-12-05', 0, '26368001629'),
+(6, 'Consumabili', 'Alta', 'Inglese', 25, '2022-02-04', '2022-02-04', 0, '90523111782'),
+(7, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2018-10-11', NULL, NULL, '41012850653'),
+(8, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2021-04-08', NULL, NULL, '83229080007'),
+(9, 'Consumabili', 'Alta', 'Italiano', 35, '2022-10-04', '2022-10-04', 0, '55429180819'),
+(10, 'Macchina ferma', 'Media', 'Italiano', NULL, '2022-12-16', NULL, NULL, '49335238861'),
+(11, 'Consulenza software', 'Bassa', 'Inglese', NULL, '2022-12-01', '2022-12-02', 5, '71471551684'),
+(12, 'Macchina non si avvia', 'Alta', 'Italiano', NULL, '2022-12-16', NULL, NULL, '16497514769'),
+(13, 'Fotocamere', 'Bassa', 'Italiano', NULL, '2022-12-09', NULL, NULL, '65235797314'),
+(14, 'Teste di taglio', 'Media', 'Italiano', NULL, '2022-12-16', NULL, NULL, '32871434744'),
+(15, 'Aspirazione', 'Alta', 'Inglese', NULL, '2022-12-16', NULL, NULL, '54936494783'),
+(16, 'Macchina bloccata', 'Media', 'Inglese', 45, '2022-11-04', '2022-11-05', 3, '89167280676'),
+(17, 'Proiezione dei sistemi cam', 'Media', 'Italiano', NULL, '2022-12-15', NULL, NULL, '83007757185'),
+(18, 'Macchina ferma', 'Bassa', 'Inglese', NULL, '2022-12-16', NULL, NULL, '49335238861'),
+(19, 'Fotocamere', 'Alta', 'Italiano', NULL, '2022-12-16', NULL, NULL, '16497514769'),
+(20, 'Macchina bloccata', 'Bassa', 'Italiano', NULL, '2022-12-16', NULL, NULL, '32142173559');
 
 --
 -- Indici per le tabelle scaricate
 --
 
 --
+-- Indici per le tabelle `acquistomacc`
+--
+ALTER TABLE `acquistomacc`
+  ADD PRIMARY KEY (`Cliente`,`Macchinario`),
+  ADD UNIQUE KEY `Macchinario` (`Macchinario`);
+
+--
 -- Indici per le tabelle `assistenzacons`
 --
 ALTER TABLE `assistenzacons`
-  ADD PRIMARY KEY (`Ticket`,`Cons`),
-  ADD KEY `Cons->Consumabile.ID_Consumabile` (`Cons`);
+  ADD PRIMARY KEY (`Cons`),
+  ADD KEY `Ticket` (`Ticket`);
 
 --
 -- Indici per le tabelle `assistenzamacc`
@@ -721,7 +839,7 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT per la tabella `consumabile`
 --
 ALTER TABLE `consumabile`
-  MODIFY `IDConsumabile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `IDConsumabile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT per la tabella `contratto`
@@ -751,18 +869,25 @@ ALTER TABLE `macchinario`
 -- AUTO_INCREMENT per la tabella `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `IDTicket` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDTicket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Limiti per le tabelle scaricate
 --
 
 --
+-- Limiti per la tabella `acquistomacc`
+--
+ALTER TABLE `acquistomacc`
+  ADD CONSTRAINT `Cliente->Cliente.Partita-IVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`),
+  ADD CONSTRAINT `Macchinario->Macchinario.IDMacchinario` FOREIGN KEY (`Macchinario`) REFERENCES `macchinario` (`IDMacchinario`);
+
+--
 -- Limiti per la tabella `assistenzacons`
 --
 ALTER TABLE `assistenzacons`
-  ADD CONSTRAINT `Cons->Consumabile.ID_Consumabile` FOREIGN KEY (`Cons`) REFERENCES `consumabile` (`IDConsumabile`),
-  ADD CONSTRAINT `Ticket->Ticket.ID_Ticket` FOREIGN KEY (`Ticket`) REFERENCES `ticket` (`IDTicket`);
+  ADD CONSTRAINT `Cons` FOREIGN KEY (`Cons`) REFERENCES `consumabile` (`IDConsumabile`),
+  ADD CONSTRAINT `Ticket` FOREIGN KEY (`Ticket`) REFERENCES `ticket` (`IDTicket`);
 
 --
 -- Limiti per la tabella `assistenzamacc`

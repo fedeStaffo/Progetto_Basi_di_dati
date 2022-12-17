@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Creato il: Dic 16, 2022 alle 17:41
+-- Creato il: Dic 17, 2022 alle 17:12
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -139,7 +139,7 @@ INSERT INTO `cliente` (`Partita_IVA`, `Nome`, `Stato`, `Saldo`) VALUES
 ('15268876497', 'Bell Star East', 'France', '+'),
 ('16058522218', 'Innovation Atlantic', 'Slovakia', '+'),
 ('16497514769', 'Bell Building', 'Denmark', '+'),
-('16735731623', 'Network Atlantic', 'Portugal', '-'),
+('16735731623', 'Network Atlantic', 'Portugal', '+'),
 ('22174266763', 'Architecture Spa', 'Italy', '+'),
 ('26041915147', 'Analysis Interactive', 'Italy', '-'),
 ('26368001629', 'Solutions Frontier', 'United Kingdom', '+'),
@@ -718,7 +718,8 @@ INSERT INTO `ticket` (`IDTicket`, `Causale`, `Priorita`, `Lingua`, `Costo`, `Ape
 (17, 'Proiezione dei sistemi cam', 'Media', 'Italiano', NULL, '2022-12-15', NULL, NULL, '83007757185'),
 (18, 'Macchina ferma', 'Bassa', 'Inglese', NULL, '2022-12-16', NULL, NULL, '49335238861'),
 (19, 'Fotocamere', 'Alta', 'Italiano', NULL, '2022-12-16', NULL, NULL, '16497514769'),
-(20, 'Macchina bloccata', 'Bassa', 'Italiano', NULL, '2022-12-16', NULL, NULL, '32142173559');
+(20, 'Macchina bloccata', 'Bassa', 'Italiano', NULL, '2022-12-16', NULL, NULL, '32142173559'),
+(21, 'Macchina ferma', 'Bassa', 'Inglese', NULL, '2022-12-17', NULL, NULL, '55429180819');
 
 --
 -- Indici per le tabelle scaricate
@@ -742,7 +743,7 @@ ALTER TABLE `assistenzacons`
 -- Indici per le tabelle `assistenzamacc`
 --
 ALTER TABLE `assistenzamacc`
-  ADD PRIMARY KEY (`Ticket`),
+  ADD PRIMARY KEY (`Ticket`,`Tecnico`),
   ADD KEY `Macchina->Macchinario.ID_Macchinario` (`Macchina`),
   ADD KEY `Tecnico->DatiLavorativi.ID_Tecnico` (`Tecnico`);
 
@@ -869,7 +870,7 @@ ALTER TABLE `macchinario`
 -- AUTO_INCREMENT per la tabella `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `IDTicket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `IDTicket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Limiti per le tabelle scaricate

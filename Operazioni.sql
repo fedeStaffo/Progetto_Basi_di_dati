@@ -173,3 +173,30 @@ FROM ticket
 JOIN cliente ON ticket.Cliente = cliente.Partita_IVA 
 WHERE cliente.Partita_IVA = '<nome_cliente>';
 
+/* OPERAZIONE 31 */
+SELECT IDTicket, Causale, DATEDIFF(Chiusura, Apertura) as Durata FROM ticket WHERE Chiusura IS NOT null;
+
+/* OPERAZIONE 32 */
+SELECT Causale, COUNT(Causale) AS Frequenza FROM ticket GROUP BY Causale;
+
+/* OPERAZIONE 33 da controllare se funziona correttamente*/
+SELECT DISTINCT (SELECT COUNT(*) FROM ticket WHERE Chiusura IS null)/(SELECT COUNT(*) FROM ticket WHERE Chiusura IS NOT null) as Rapporto FROM ticket;
+
+/* OPERAZIONE 34 */
+SELECT Macchinario.Categoria, COUNT(acquistomacc.Macchinario) AS TotaleAcquisti 
+FROM Macchinario 
+JOIN acquistomacc 
+ON Macchinario.IDMacchinario = acquistomacc.Macchinario 
+GROUP BY Macchinario.Categoria;
+
+/* OPERAZIONE 35 */
+SELECT consumabile.Categoria, COUNT(assistenzacons.Cons) as TotaleConsumabili
+FROM consumabile JOIN assistenzacons
+ON consumabile.IDConsumabile = assistenzacons.Cons
+GROUP BY consumabile.Categoria;
+
+/* OPERAZIONE 36 */
+SELECT macchinario.*, COUNT(assistenzamacc.Macchina) as Guasti
+FROM macchinario JOIN assistenzamacc
+ON macchinario.IDMacchinario = assistenzamacc.Macchina
+GROUP BY IDMacchinario;

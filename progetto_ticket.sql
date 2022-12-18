@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Creato il: Dic 17, 2022 alle 17:12
+-- Host: 127.0.0.1
+-- Creato il: Dic 18, 2022 alle 16:58
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -433,55 +433,55 @@ CREATE TABLE `garanzia` (
   `IDGaranzia` int(7) NOT NULL,
   `DataInstallazione` date NOT NULL DEFAULT current_timestamp(),
   `LuogoInstallazione` varchar(20) NOT NULL,
-  `Scadenza` date DEFAULT NULL
+  `Scadenza` date DEFAULT NULL,
+  `Macc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `garanzia`
 --
 
-INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`, `Scadenza`) VALUES
-(1, '2022-12-07', 'Ancona', '2023-12-07'),
-(2, '2022-12-07', 'Fermo', '2023-12-07'),
-(3, '2020-09-25', 'Northville', '2021-09-25'),
-(4, '2014-03-02', 'Arlington', '2015-03-02'),
-(5, '2020-12-07', 'Bucklin', '2021-12-07'),
-(6, '2021-12-16', 'Sykeston', '2022-12-16'),
-(7, '2018-06-08', 'Watford City', '2019-06-08'),
-(8, '2013-01-19', 'Keene', '2014-01-19'),
-(9, '2014-09-26', 'Joseph', '2015-09-26'),
-(10, '2018-05-06', 'Wichita', '2019-05-06'),
-(11, '2014-03-24', 'Las Vegas', '2015-03-24'),
-(12, '2014-08-13', 'Londonderry', '2015-08-13'),
-(13, '2013-06-05', 'Macdoel', '2014-06-05'),
-(14, '2020-10-07', 'Springfield', '2021-10-07'),
-(15, '2019-10-08', 'Bellville', '2020-10-08'),
-(16, '2021-07-26', 'Saint Leo', '2022-07-26'),
-(17, '2020-05-10', 'Marshfield', '2021-05-10'),
-(18, '2021-08-09', 'Agra', '2022-08-09'),
-(19, '2019-12-10', 'Reads Landing', '2020-12-10'),
-(20, '2016-01-07', 'Daleville', '2017-01-07'),
-(21, '2016-07-29', 'Coolidge', '2017-07-29'),
-(22, '2019-07-04', 'Porter Corners', '2020-07-04'),
-(23, '2018-10-23', 'Orlando', '2019-10-23'),
-(24, '2021-10-16', 'Cranberry Twp', '2022-10-16'),
-(25, '2014-05-17', 'Uvalde', '2015-05-17'),
-(26, '2013-09-10', 'Viola', '2014-09-10'),
-(27, '2014-12-12', 'Wayside', '2015-12-12'),
-(28, '2017-01-31', 'Willcox', '2018-01-31'),
-(29, '2013-09-03', 'Withee', '2014-09-03'),
-(30, '2021-06-23', 'Stanford', '2022-06-23'),
-(31, '2022-10-22', 'Cedar', '2023-10-22'),
-(32, '2015-11-01', 'Sutherlin', '2016-11-01'),
-(33, '2015-07-28', 'Kenner', '2016-07-28'),
-(34, '2018-10-03', 'Vero Beach', '2019-10-03'),
-(35, '2020-08-19', 'Havre', '2021-08-19'),
-(36, '2018-03-17', 'Verplanck', '2019-03-17'),
-(37, '2019-04-15', 'Saint Petersburg', '2020-04-15'),
-(38, '2017-03-18', 'Wynne', '2018-03-18'),
-(39, '2022-11-22', 'Rudolph', '2023-11-22'),
-(40, '2020-03-26', 'Idaho Falls', '2021-03-26'),
-(41, '2022-12-15', 'Milano', '2023-12-15');
+INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`, `Scadenza`, `Macc`) VALUES
+(1, '2022-12-07', 'Ancona', '2023-12-07', 60),
+(2, '2022-12-07', 'Fermo', '2023-12-07', 13),
+(3, '2020-09-25', 'Northville', '2021-09-25', 22),
+(4, '2014-03-02', 'Arlington', '2015-03-02', 9),
+(5, '2020-12-07', 'Bucklin', '2021-12-07', 71),
+(6, '2021-12-16', 'Sykeston', '2022-12-16', 40),
+(7, '2018-06-08', 'Watford City', '2019-06-08', 53),
+(8, '2013-01-19', 'Keene', '2014-01-19', 30),
+(9, '2014-09-26', 'Joseph', '2015-09-26', 54),
+(10, '2018-05-06', 'Wichita', '2019-05-06', 56),
+(11, '2014-03-24', 'Las Vegas', '2015-03-24', 42),
+(12, '2014-08-13', 'Londonderry', '2015-08-13', 72),
+(13, '2013-06-05', 'Macdoel', '2014-06-05', 12),
+(14, '2020-10-07', 'Springfield', '2021-10-07', 8),
+(15, '2019-10-08', 'Bellville', '2020-10-08', 64),
+(16, '2021-07-26', 'Saint Leo', '2022-07-26', 59),
+(17, '2020-05-10', 'Marshfield', '2021-05-10', 5),
+(18, '2021-08-09', 'Agra', '2022-08-09', 70),
+(19, '2019-12-10', 'Reads Landing', '2020-12-10', 44),
+(20, '2016-01-07', 'Daleville', '2017-01-07', 25),
+(21, '2016-07-29', 'Coolidge', '2017-07-29', 11),
+(22, '2019-07-04', 'Porter Corners', '2020-07-04', 57),
+(23, '2018-10-23', 'Orlando', '2019-10-23', 17),
+(24, '2021-10-16', 'Cranberry Twp', '2022-10-16', 2),
+(25, '2014-05-17', 'Uvalde', '2015-05-17', 55),
+(26, '2013-09-10', 'Viola', '2014-09-10', 58),
+(27, '2014-12-12', 'Wayside', '2015-12-12', 39),
+(28, '2017-01-31', 'Willcox', '2018-01-31', 1),
+(29, '2013-09-03', 'Withee', '2014-09-03', 21),
+(30, '2021-06-23', 'Stanford', '2022-06-23', 7),
+(31, '2022-10-22', 'Cedar', '2023-10-22', 16),
+(32, '2015-11-01', 'Sutherlin', '2016-11-01', 41),
+(33, '2015-07-28', 'Kenner', '2016-07-28', 6),
+(34, '2018-10-03', 'Vero Beach', '2019-10-03', 10),
+(35, '2020-08-19', 'Havre', '2021-08-19', 63),
+(36, '2018-03-17', 'Verplanck', '2019-03-17', 14),
+(37, '2019-04-15', 'Saint Petersburg', '2020-04-15', 15),
+(38, '2017-03-18', 'Wynne', '2018-03-18', 18),
+(39, '2022-11-22', 'Rudolph', '2023-11-22', 26),
+(40, '2020-03-26', 'Idaho Falls', '2021-03-26', 29);
 
 -- --------------------------------------------------------
 
@@ -491,55 +491,54 @@ INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`,
 
 CREATE TABLE `macchinario` (
   `IDMacchinario` int(11) NOT NULL,
-  `Categoria` varchar(15) NOT NULL,
-  `Gar` int(7) NOT NULL
+  `Categoria` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `macchinario`
 --
 
-INSERT INTO `macchinario` (`IDMacchinario`, `Categoria`, `Gar`) VALUES
-(1, 'Kombo TH', 1),
-(2, 'kombo tav', 2),
-(5, 'Kombo TAV', 4),
-(6, 'Spark', 27),
-(7, 'Kombo TH', 19),
-(8, 'Kombo STC', 10),
-(9, 'Booster', 9),
-(10, 'Spark', 14),
-(11, 'Kombo TAV', 26),
-(12, 'Kombo STC', 11),
-(13, 'Booster', 16),
-(14, 'Spark', 7),
-(15, 'Spark', 20),
-(16, 'Kombo TH', 6),
-(17, 'Kombo TAV', 8),
-(18, 'Spark', 25),
-(21, 'Kombo TH', 18),
-(22, 'Booster', 3),
-(25, 'Kombo TAV', 15),
-(26, 'Spark', 24),
-(29, 'Spark', 21),
-(30, 'Kombo STC', 23),
-(39, 'Kombo TH', 5),
-(40, 'Booster', 22),
-(41, 'Spark', 13),
-(42, 'Kombo STC', 12),
-(44, 'Kombo TAV', 17),
-(53, 'Booster', 32),
-(54, 'Kombo STC', 28),
-(55, 'Kombo TH', 37),
-(56, 'Kombo STC', 29),
-(57, 'Kombo TAV', 30),
-(58, 'Kombo TH', 34),
-(59, 'Kombo TAV', 36),
-(60, 'Booster', 33),
-(63, 'Spark', 31),
-(64, 'Kombo STC', 35),
-(70, 'Kombo TAV', 40),
-(71, 'Booster', 38),
-(72, 'Kombo STC', 39);
+INSERT INTO `macchinario` (`IDMacchinario`, `Categoria`) VALUES
+(1, 'Kombo TH'),
+(2, 'kombo tav'),
+(5, 'Kombo TAV'),
+(6, 'Spark'),
+(7, 'Kombo TH'),
+(8, 'Kombo STC'),
+(9, 'Booster'),
+(10, 'Spark'),
+(11, 'Kombo TAV'),
+(12, 'Kombo STC'),
+(13, 'Booster'),
+(14, 'Spark'),
+(15, 'Spark'),
+(16, 'Kombo TH'),
+(17, 'Kombo TAV'),
+(18, 'Spark'),
+(21, 'Kombo TH'),
+(22, 'Booster'),
+(25, 'Kombo TAV'),
+(26, 'Spark'),
+(29, 'Spark'),
+(30, 'Kombo STC'),
+(39, 'Kombo TH'),
+(40, 'Booster'),
+(41, 'Spark'),
+(42, 'Kombo STC'),
+(44, 'Kombo TAV'),
+(53, 'Booster'),
+(54, 'Kombo STC'),
+(55, 'Kombo TH'),
+(56, 'Kombo STC'),
+(57, 'Kombo TAV'),
+(58, 'Kombo TH'),
+(59, 'Kombo TAV'),
+(60, 'Booster'),
+(63, 'Spark'),
+(64, 'Kombo STC'),
+(70, 'Kombo TAV'),
+(71, 'Booster'),
+(72, 'Kombo STC');
 
 -- --------------------------------------------------------
 
@@ -796,15 +795,14 @@ ALTER TABLE `emailtecnico`
 -- Indici per le tabelle `garanzia`
 --
 ALTER TABLE `garanzia`
-  ADD PRIMARY KEY (`IDGaranzia`);
+  ADD PRIMARY KEY (`IDGaranzia`),
+  ADD UNIQUE KEY `Macc` (`Macc`);
 
 --
 -- Indici per le tabelle `macchinario`
 --
 ALTER TABLE `macchinario`
-  ADD PRIMARY KEY (`IDMacchinario`),
-  ADD UNIQUE KEY `Gar` (`Gar`),
-  ADD KEY `Gar->Garanzia.IDGaranzia` (`Gar`);
+  ADD PRIMARY KEY (`IDMacchinario`);
 
 --
 -- Indici per le tabelle `specializzazione`
@@ -923,10 +921,10 @@ ALTER TABLE `emailtecnico`
   ADD CONSTRAINT `NumTecnico->DatiLavorativi.IDTecnico` FOREIGN KEY (`NumTecnico`) REFERENCES `datilavorativi` (`IDTecnico`);
 
 --
--- Limiti per la tabella `macchinario`
+-- Limiti per la tabella `garanzia`
 --
-ALTER TABLE `macchinario`
-  ADD CONSTRAINT `Gar->Garanzia.IDGaranzia` FOREIGN KEY (`Gar`) REFERENCES `garanzia` (`IDGaranzia`);
+ALTER TABLE `garanzia`
+  ADD CONSTRAINT `Macc->Macchinario.IDMacchinario` FOREIGN KEY (`Macc`) REFERENCES `macchinario` (`IDMacchinario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limiti per la tabella `specializzazione`

@@ -224,3 +224,80 @@ FROM cliente;
 /* OPERAZIONE 43 */
 SELECT Priorita, COUNT(IDTicket) AS Numero_Ticket FROM ticket GROUP BY Priorita;
 
+/* OPERAZIONE 44 */
+SELECT DISTINCT A1.Ticket, A1.Macchina, A1.Tecnico, A2.Tecnico
+FROM assistenzamacc as A1, assistenzamacc as A2 
+WHERE A1.Ticket = A2.Ticket and A1.Tecnico <> A2.Tecnico
+
+/* OPERAZIONE 45 ???*/
+SELECT distinct IDTecnico, Stato, assistenzamacc.Ticket
+FROM datilavorativi, assistenzamacc, acquistomacc, cliente
+WHERE Resident = 'no' and 
+	  datilavorativi.IDTecnico = assistenzamacc.Tecnico and 
+      assistenzamacc.Macchina = acquistomacc.Macchinario and 
+      acquistomacc.Cliente = cliente.Partita_IVA
+	  cliente.Stato <> 'Italy'
+GROUP by IDTecnico
+
+/* OPERAZIONE 46 */
+
+
+
+/* OPERAZIONE 47 ???*/
+SELECT Ticket, Macchina, Nome, Cognome, max(NumOre) 
+FROM assistenzamacc JOIN datilavorativi on assistenzamacc.Tecnico = datilavorativi.IDTecnico 
+     JOIN datianagrafici on datilavorativi.CF = datianagrafici.CodiceFiscale
+WHERE 1
+
+/* OPERAZIONE 48 */
+
+
+
+/* OPERAZIONE 49 ???*/
+/* Se si vogliono ricercare le email di un cliente utilizzando la partita iva come chiave di ricerca */
+SELECT Partita_IVA, Nome, Email
+FROM cliente JOIN emailcliente on cliente.Partita_IVA = emailcliente.NumCliente
+WHERE cliente.Partita_IVA = '<partita_iva>'
+GROUP BY Partita_IVA
+/* Se si vogliono ricercare le email di un cliente utilizzando il nome del cliente come chiave di ricerca */
+SELECT Partita_IVA, Nome, Email
+FROM cliente JOIN emailcliente on cliente.Partita_IVA = emailcliente.NumCliente
+WHERE cliente.Partita_IVA = '<nome_cliente>'
+GROUP BY Partita_IVA
+
+/* OPERAZIONE 50 ???*/
+/* Se si vogliono ricercare i numeri di telefono di un cliente utilizzando la partita iva come chiave di ricerca */
+SELECT Partita_IVA, Nome, Telefono 
+FROM cliente JOIN telcliente on cliente.Partita_IVA = telcliente.NumCliente
+WHERE cliente.Partita_IVA = '<partita_iva>'
+GROUP BY Partita_IVA
+/* Se si vogliono ricercare i numeri di telefono di un cliente utilizzando il nome del cliente come chiave di ricerca */
+SELECT Partita_IVA, Nome, Telefono 
+FROM cliente JOIN telcliente on cliente.Partita_IVA = telcliente.NumCliente
+WHERE cliente.Partita_IVA = '<nome_cliente>'
+GROUP BY Partita_IVA
+
+
+/* OPERAZIONE 51 ???*/
+/* Se si vogliono ricercare le email di un tecnico utilizzando il codice id del tecnico come chiave di ricerca */
+SELECT IDTecnico, Nome, Cognome, Email
+FROM datilavorativi JOIN emailtecnico on datilavorativi.IDTecnico = emailtecnico.NumTecnico 
+     JOIN datianagrafici on datilavorativi.CF = datianagrafici.CodiceFiscale
+WHERE IDTecnico = '<id_tecnico>';
+GROUP BY IDTecnico
+
+/* OPERAZIONE 52 ???*/
+/* Se si vogliono ricercare i numeri di telefono di un tecnico utilizzando il codice id del tecnico come chiave di ricerca */
+SELECT IDTecnico, Nome, Cognome, Telefono
+FROM datilavorativi JOIN teltecnico on datilavorativi.IDTecnico = teltecnico.NumTecnico
+     JOIN datianagrafici on datilavorativi.CF = datianagrafici.CodiceFiscale
+WHERE IDTecnico = '<id_tecnico>'
+GROUP BY IDTecnico
+
+
+/* OPERAZIONE 53 */
+SELECT IDTecnico, Nome, Cognome, DataNascita, Sesso, CF, Resident  
+FROM datilavorativi, datianagrafici
+WHERE datilavorativi.CF = datianagrafici.CodiceFiscale
+GROUP BY IDTecnico
+

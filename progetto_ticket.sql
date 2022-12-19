@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Dic 18, 2022 alle 16:58
+-- Host: 127.0.0.1:3308
+-- Creato il: Dic 19, 2022 alle 23:10
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `progetto_ticket`
+-- Database: `ticket`
 --
 
 -- --------------------------------------------------------
@@ -106,15 +106,21 @@ CREATE TABLE `assistenzamacc` (
 --
 
 INSERT INTO `assistenzamacc` (`Ticket`, `Macchina`, `Tecnico`, `NumOre`) VALUES
+(10, 41, 4, 5),
 (10, 41, 8, NULL),
 (11, 57, 5, 15),
+(11, 57, 7, 2),
 (12, 6, 8, NULL),
+(13, 41, 4, 15),
 (13, 41, 8, NULL),
 (14, 71, 1, NULL),
+(14, 71, 4, 4),
 (15, 54, 2, NULL),
+(15, 54, 7, 1),
 (17, 55, 6, NULL),
 (18, 41, 1, NULL),
-(19, 6, 2, NULL);
+(19, 6, 2, NULL),
+(19, 6, 3, 8);
 
 -- --------------------------------------------------------
 

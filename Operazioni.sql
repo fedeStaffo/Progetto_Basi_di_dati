@@ -200,3 +200,27 @@ SELECT macchinario.*, COUNT(assistenzamacc.Macchina) as Guasti
 FROM macchinario JOIN assistenzamacc
 ON macchinario.IDMacchinario = assistenzamacc.Macchina
 GROUP BY IDMacchinario;
+
+/* OPERAZIONE 37 */
+SELECT AVG(ticket.Costo) AS Costo_Medio FROM ticket;
+
+/* OPERAZIONE 38 */
+SELECT AVG(contratto.Canone) AS Canone_Medio FROM contratto;
+
+/* OPERAZIONE 39 */
+SELECT MAX(Canone) AS Canone_Massimo, MIN(Canone) AS Canone_Minimo FROM contratto;
+
+/* OPERAZIONE 40 */
+SELECT Stato, COUNT(Partita_IVA) FROM Cliente GROUP BY Stato;
+
+/* OPERAZIONE 41 */
+SELECT ticket.Cliente, COUNT(ticket.IDTicket) FROM ticket GROUP BY ticket.Cliente;
+
+/* OPERAZIONE 42 */
+SELECT SUM(CASE WHEN cliente.Saldo = '+' THEN 1 ELSE 0 END) AS Clienti_Solventi, 
+SUM(CASE WHEN cliente.Saldo = '-' THEN 1 ELSE 0 END) AS Clienti_Insolventi 
+FROM cliente;
+
+/* OPERAZIONE 43 */
+SELECT Priorita, COUNT(IDTicket) AS Numero_Ticket FROM ticket GROUP BY Priorita;
+

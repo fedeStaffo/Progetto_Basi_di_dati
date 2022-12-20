@@ -97,15 +97,36 @@ DELETE FROM macchinario WHERE IDMacchinario = <id_macchina>;
 DELETE FROM consumabile WHERE IDConsumabile = <id_consumabile>;
 
 /* OPERAZIONE 18 */
-UPDATE ticket set Chiusura = CURRENT_DATE, OreImpiegate = (SELECT SUM(NumOre) 
-FROM assistenzamacc 
+CREATE VIEW Ore_Ticket_Resident (ID_Ticket, Ore) AS
+SELECT Ticket, SUM(NumOre) FROM assistenzamacc
 JOIN datilavorativi ON assistenzamacc.Tecnico = datilavorativi.IDTecnico
-WHERE assistenzamacc.Ticket = <id_ticket>), Costo = 15*(
-SELECT SUM(NumOre) 
-FROM assistenzamacc 
+WHERE datilavorativi.Resident = 'si'
+GROUP BY Ticket;
+
+CREATE VIEW Ore_Ticket_Non_Resident (ID_Ticket, Ore) AS
+SELECT Ticket, SUM(NumOre) FROM assistenzamacc
 JOIN datilavorativi ON assistenzamacc.Tecnico = datilavorativi.IDTecnico
-WHERE assistenzamacc.Ticket = <id_ticket> AND datilavorativi.resident = 'si')
-where IDTicket = <id_ticket>;
+WHERE datilavorativi.Resident = 'no'
+GROUP BY Ticket;
+
+UPDATE ticket set Chiusura = CURRENT_DATE WHERE IDTicket = <id_tecnico>;
+UPDATE ticket set Costo = 
+CASE 
+WHEN (SELECT ID_Ticket FROM ore_ticket_non_resident WHERE ID_Ticket = <id_tecnico>) IS NULL
+THEN (SELECT SUM(Ore) FROM ore_ticket_resident WHERE ID_Ticket = <id_tecnico>) *15
+ELSE
+(SELECT SUM(Ore) FROM ore_ticket_resident WHERE ID_Ticket = <id_tecnico>) *15 + (SELECT SUM(Ore) FROM ore_ticket_non_resident WHERE ID_Ticket = <id_tecnico>) * 20
+END
+WHERE IDTicket = <id_tecnico>;
+UPDATE ticket set OreImpiegate = 
+CASE 
+WHEN (SELECT ID_Ticket FROM ore_ticket_non_resident WHERE ID_Ticket = <id_tecnico>) IS NULL
+THEN (SELECT SUM(Ore) FROM ore_ticket_resident WHERE ID_Ticket = <id_tecnico>)
+ELSE
+(SELECT SUM(Ore) FROM ore_ticket_resident WHERE ID_Ticket = <id_tecnico>) + (SELECT SUM(Ore) FROM ore_ticket_non_resident WHERE ID_Ticket = <id_tecnico>)
+END
+WHERE IDTicket = <id_tecnico>;
+UPDATE ticket SET Costo = CASE WHEN (Priorita = 'Alta' OR Priorita = 'Media') THEN Costo = 0 END WHERE IDTicket = <id_tecnico>;
 
 /* OPERAZIONE 19 */
 SELECT * FROM ticket WHERE Chiusura IS NULL;
@@ -239,7 +260,7 @@ WHERE Resident = 'no' and
 Order by assistenzamacc.Tecnico
 
 /* OPERAZIONE 46 */
-
+CREATE VIEW OreTotali (Tecnico, Nome, Cognome, OreTotali) AS SELECT assistenzamacc.Tecnico, datianagrafici.Nome, datianagrafici.Cognome, SUM(assistenzamacc.NumOre) AS OreTotali FROM assistenzamacc JOIN datilavorativi ON assistenzamacc.Tecnico = datilavorativi.IDTecnico JOIN datianagrafici ON datilavorativi.CF = datianagrafici.CodiceFiscale;
 
 
 /* OPERAZIONE 47 */
@@ -301,4 +322,3 @@ SELECT IDTecnico, Nome, Cognome, DataNascita, Sesso, CF, Resident
 FROM datilavorativi, datianagrafici
 WHERE datilavorativi.CF = datianagrafici.CodiceFiscale
 GROUP BY IDTecnico
-

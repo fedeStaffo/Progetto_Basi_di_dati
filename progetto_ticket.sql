@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Creato il: Dic 20, 2022 alle 09:09
+-- Creato il: Dic 20, 2022 alle 13:00
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -133,8 +133,8 @@ CREATE TABLE `assistenzamacc` (
 
 INSERT INTO `assistenzamacc` (`Ticket`, `Macchina`, `Tecnico`, `NumOre`) VALUES
 (12, 6, 8, 6),
-(13, 41, 4, 15),
-(13, 41, 8, 3),
+(13, 72, 4, 15),
+(13, 72, 8, 3),
 (14, 71, 1, 7),
 (14, 71, 3, 4),
 (15, 54, 2, 3),
@@ -142,7 +142,7 @@ INSERT INTO `assistenzamacc` (`Ticket`, `Macchina`, `Tecnico`, `NumOre`) VALUES
 (17, 55, 6, 3),
 (19, 6, 1, 10),
 (19, 6, 4, 8),
-(20, 5, 5, 5),
+(20, 5, 5, 15),
 (21, 9, 1, 5),
 (21, 9, 3, 2);
 
@@ -752,17 +752,15 @@ INSERT INTO `ticket` (`IDTicket`, `Causale`, `Priorita`, `Lingua`, `Costo`, `Ape
 (7, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2018-10-11', NULL, NULL, '41012850653'),
 (8, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2021-04-08', NULL, NULL, '83229080007'),
 (9, 'Consumabili', 'Alta', 'Italiano', 35, '2022-10-04', '2022-10-04', 0, '55429180819'),
-(10, 'Macchina ferma', 'Bloccata', 'Inglese', NULL, '2022-12-16', NULL, NULL, '49335238861'),
-(11, 'Consulenza software', 'Bloccata', 'Inglese', NULL, '2022-12-01', '2022-12-02', 5, '71471551684'),
+(11, 'Consulenza software', 'Bloccata', 'Inglese', NULL, '2022-12-01', NULL, NULL, '71471551684'),
 (12, 'Macchina non si avvia', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-19', 6, '16497514769'),
 (13, 'Fotocamere', 'Bassa', 'Inglese', 345, '2022-12-09', '2022-12-13', 18, '65235797314'),
 (14, 'Teste di taglio', 'Bassa', 'Inglese', 185, '2022-12-16', '2022-12-19', 11, '32871434744'),
 (15, 'Aspirazione', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 4, '54936494783'),
 (16, 'Macchina bloccata', 'Bloccata', 'Italiano', NULL, '2022-11-04', NULL, NULL, '89167280676'),
 (17, 'Proiezione dei sistemi cam', 'Media', 'Inglese', 0, '2022-12-15', '2022-12-15', 3, '83007757185'),
-(18, 'Macchina ferma', 'Bloccata', 'Inglese', NULL, '2022-12-16', NULL, NULL, '49335238861'),
 (19, 'Fotocamere', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-20', 18, '16497514769'),
-(20, 'Macchina bloccata', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 5, '32142173559'),
+(20, 'Macchina bloccata', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 15, '32142173559'),
 (21, 'Macchina ferma', 'Bassa', 'Italiano', 115, '2022-12-17', '2022-12-18', 7, '55429180819');
 
 --

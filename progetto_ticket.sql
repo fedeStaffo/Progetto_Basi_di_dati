@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Creato il: Dic 19, 2022 alle 23:10
+-- Creato il: Dic 20, 2022 alle 09:09
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -38,8 +38,13 @@ CREATE TABLE `acquistomacc` (
 
 INSERT INTO `acquistomacc` (`Cliente`, `Macchinario`) VALUES
 ('10128395405', 16),
+('14617938604', 2),
+('15268876497', 11),
+('16058522218', 12),
 ('16497514769', 6),
+('16735731623', 17),
 ('22174266763', 60),
+('26041915147', 18),
 ('26368001629', 21),
 ('26368001629', 40),
 ('28054881706', 26),
@@ -51,20 +56,41 @@ INSERT INTO `acquistomacc` (`Cliente`, `Macchinario`) VALUES
 ('32871434744', 71),
 ('33315005088', 13),
 ('33315005088', 14),
+('36144094207', 25),
+('41012850653', 29),
+('42454205237', 30),
+('43849287106', 42),
+('45265299447', 56),
+('48925706556', 73),
 ('49335238861', 41),
 ('49386669284', 1),
 ('49386669284', 44),
 ('54936494783', 54),
+('55429180819', 9),
+('56934816291', 74),
 ('65235797314', 72),
+('66098192582', 75),
+('68249353645', 76),
+('69090775976', 77),
 ('71471551684', 57),
+('72304749147', 78),
+('73586436589', 79),
+('76091394328', 80),
 ('78989412550', 22),
+('81383350644', 81),
+('82026462441', 82),
 ('83007757185', 55),
 ('83229080007', 10),
 ('89167280676', 63),
+('90452571726', 83),
+('90523111782', 84),
 ('93269259186', 59),
+('95202775872', 85),
+('95890272415', 86),
 ('96799763888', 15),
 ('97925277933', 8),
-('97925277933', 58);
+('97925277933', 58),
+('99528944960', 87);
 
 -- --------------------------------------------------------
 
@@ -106,21 +132,19 @@ CREATE TABLE `assistenzamacc` (
 --
 
 INSERT INTO `assistenzamacc` (`Ticket`, `Macchina`, `Tecnico`, `NumOre`) VALUES
-(10, 41, 4, 5),
-(10, 41, 8, NULL),
-(11, 57, 5, 15),
-(11, 57, 7, 2),
-(12, 6, 8, NULL),
+(12, 6, 8, 6),
 (13, 41, 4, 15),
-(13, 41, 8, NULL),
-(14, 71, 1, NULL),
-(14, 71, 4, 4),
-(15, 54, 2, NULL),
+(13, 41, 8, 3),
+(14, 71, 1, 7),
+(14, 71, 3, 4),
+(15, 54, 2, 3),
 (15, 54, 7, 1),
-(17, 55, 6, NULL),
-(18, 41, 1, NULL),
-(19, 6, 2, NULL),
-(19, 6, 3, 8);
+(17, 55, 6, 3),
+(19, 6, 1, 10),
+(19, 6, 4, 8),
+(20, 5, 5, 5),
+(21, 9, 1, 5),
+(21, 9, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -506,7 +530,7 @@ CREATE TABLE `macchinario` (
 
 INSERT INTO `macchinario` (`IDMacchinario`, `Categoria`) VALUES
 (1, 'Kombo TH'),
-(2, 'kombo tav'),
+(2, 'Kombo TAV'),
 (5, 'Kombo TAV'),
 (6, 'Spark'),
 (7, 'Kombo TH'),
@@ -544,7 +568,22 @@ INSERT INTO `macchinario` (`IDMacchinario`, `Categoria`) VALUES
 (64, 'Kombo STC'),
 (70, 'Kombo TAV'),
 (71, 'Booster'),
-(72, 'Kombo STC');
+(72, 'Kombo STC'),
+(73, 'Kombo STC'),
+(74, 'Kombo TH'),
+(75, 'Spark'),
+(76, 'Booster'),
+(77, 'Kombo TAV'),
+(78, 'Kombo STC'),
+(79, 'Kombo TH'),
+(80, 'Booster'),
+(81, 'Spark'),
+(82, 'Spark'),
+(83, 'Kombo TAV'),
+(84, 'Kombo STC'),
+(85, 'Kombo TH'),
+(86, 'Booster'),
+(87, 'Booster');
 
 -- --------------------------------------------------------
 
@@ -713,18 +752,18 @@ INSERT INTO `ticket` (`IDTicket`, `Causale`, `Priorita`, `Lingua`, `Costo`, `Ape
 (7, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2018-10-11', NULL, NULL, '41012850653'),
 (8, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2021-04-08', NULL, NULL, '83229080007'),
 (9, 'Consumabili', 'Alta', 'Italiano', 35, '2022-10-04', '2022-10-04', 0, '55429180819'),
-(10, 'Macchina ferma', 'Media', 'Italiano', NULL, '2022-12-16', NULL, NULL, '49335238861'),
-(11, 'Consulenza software', 'Bassa', 'Inglese', NULL, '2022-12-01', '2022-12-02', 5, '71471551684'),
-(12, 'Macchina non si avvia', 'Alta', 'Italiano', NULL, '2022-12-16', NULL, NULL, '16497514769'),
-(13, 'Fotocamere', 'Bassa', 'Italiano', NULL, '2022-12-09', NULL, NULL, '65235797314'),
-(14, 'Teste di taglio', 'Media', 'Italiano', NULL, '2022-12-16', NULL, NULL, '32871434744'),
-(15, 'Aspirazione', 'Alta', 'Inglese', NULL, '2022-12-16', NULL, NULL, '54936494783'),
-(16, 'Macchina bloccata', 'Media', 'Inglese', 45, '2022-11-04', '2022-11-05', 3, '89167280676'),
-(17, 'Proiezione dei sistemi cam', 'Media', 'Italiano', NULL, '2022-12-15', NULL, NULL, '83007757185'),
-(18, 'Macchina ferma', 'Bassa', 'Inglese', NULL, '2022-12-16', NULL, NULL, '49335238861'),
-(19, 'Fotocamere', 'Alta', 'Italiano', NULL, '2022-12-16', NULL, NULL, '16497514769'),
-(20, 'Macchina bloccata', 'Bassa', 'Italiano', NULL, '2022-12-16', NULL, NULL, '32142173559'),
-(21, 'Macchina ferma', 'Bassa', 'Inglese', NULL, '2022-12-17', NULL, NULL, '55429180819');
+(10, 'Macchina ferma', 'Bloccata', 'Inglese', NULL, '2022-12-16', NULL, NULL, '49335238861'),
+(11, 'Consulenza software', 'Bloccata', 'Inglese', NULL, '2022-12-01', '2022-12-02', 5, '71471551684'),
+(12, 'Macchina non si avvia', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-19', 6, '16497514769'),
+(13, 'Fotocamere', 'Bassa', 'Inglese', 345, '2022-12-09', '2022-12-13', 18, '65235797314'),
+(14, 'Teste di taglio', 'Bassa', 'Inglese', 185, '2022-12-16', '2022-12-19', 11, '32871434744'),
+(15, 'Aspirazione', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 4, '54936494783'),
+(16, 'Macchina bloccata', 'Bloccata', 'Italiano', NULL, '2022-11-04', NULL, NULL, '89167280676'),
+(17, 'Proiezione dei sistemi cam', 'Media', 'Inglese', 0, '2022-12-15', '2022-12-15', 3, '83007757185'),
+(18, 'Macchina ferma', 'Bloccata', 'Inglese', NULL, '2022-12-16', NULL, NULL, '49335238861'),
+(19, 'Fotocamere', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-20', 18, '16497514769'),
+(20, 'Macchina bloccata', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 5, '32142173559'),
+(21, 'Macchina ferma', 'Bassa', 'Italiano', 115, '2022-12-17', '2022-12-18', 7, '55429180819');
 
 --
 -- Indici per le tabelle scaricate
@@ -868,7 +907,7 @@ ALTER TABLE `garanzia`
 -- AUTO_INCREMENT per la tabella `macchinario`
 --
 ALTER TABLE `macchinario`
-  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT per la tabella `ticket`

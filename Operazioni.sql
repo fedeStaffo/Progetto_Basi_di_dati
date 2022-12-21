@@ -39,7 +39,8 @@ INSERT INTO `assistenzamacc` (`Ticket`, `Macchina`, `Tecnico`, `NumOre`) VALUES 
 /* Nel campo IDGaranzia non va inserito nulla in quanto il sistema aggiunge automaticamente un valore con auto_increment
 Il campo DataInstallazione viene settato come current_date in quanto all'installazione del macchinario coincide l'inizio della garanzia
 Il campo Scadenza invece coincide con la data di installazione traslata di un anno. */
-INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`, `Scadenza`, `Macc`) VALUES (null, current_date, <luogo>, current_date + 1 YEAR, <id_macchina>)
+INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`, `Scadenza`, `Macc`) VALUES (null, current_date, <luogo>, null, <id_macchina>)
+UPDATE garanzia SET Scadenza = (SELECT DATE(DATE_ADD(DataInstallazione, INTERVAL 1 YEAR)) FROM garanzia WHERE Macc = <id_macchina>) WHERE Macc = <id_macchina>;
 
 /* OPERAZIONE 6 */
 INSERT INTO `acquistomacc` (`Cliente`, `Macchinario`) VALUES (...);
@@ -48,18 +49,15 @@ INSERT INTO `acquistomacc` (`Cliente`, `Macchinario`) VALUES (...);
 /* Nel campo IDContratto non va inserito nulla in quanto il sistema aggiunge automaticamente un valore con auto_increment
 Il campo DataInizio viene settato come current_date in quanto l'inserimento di un nuovo contratto coincide con l'inizio di validità del contratto
 Il campo DataFine invece coincide con la data di inizio traslata di tre anni.  */
-INSERT INTO `contratto` (`IDContratto`, `DataInizio`, `DataFine`, `Canone`, `Banca`, `Cliente`) VALUES (null, current_date, current_date + 3 YEAR, <canone>, <banca>, <Partita_IVA>);
+INSERT INTO `contratto` (`IDContratto`, `DataInizio`, `DataFine`, `Canone`, `Banca`, `Cliente`) VALUES (null, current_date, null, <canone>, <banca>, <Partita_IVA>);
+UPDATE contratto SET DataFine = (SELECT DATE(DATE_ADD(DataInizio, INTERVAL 3 YEAR)) FROM contratto WHERE Cliente = <Partita_IVA>) WHERE Cliente = <Partita_IVA>;
 
 /* OPERAZIONE 8 */
 /* Nel campo IDConsumabile non va inserito nulla in quanto il sistema aggiunge automaticamente un valore con auto_increment */
 INSERT INTO `consumabile` (`IDConsumabile`, `Categoria`, `Prezzo`) VALUES (null, <cat>, <prezzo>);
 
-/* OPERAZIONE 9 ???*/
-SELECT *
-FROM assistenzamacc
-CASE WHEN (Ticket = <id_ticket> and Tecnico <> <id_tecnico>) 
-THEN (INSERT INTO `assistenzamacc` (`Ticket`, `Macchina`, `Tecnico`, `NumOre`) VALUES (<id_ticket>, assistenzamacc.Macchina, <id_tecnico>, null)
-END;
+/* OPERAZIONE 9 */
+INSERT INTO `assistenzamacc` (`Ticket`, `Macchina`, `Tecnico`, `NumOre`) VALUES (<id_ticket>, <id_macchina>, <id_tecnico>, null);
 
 /* OPERAZIONE 10 */
 /*Se si vuole cambiare il saldo  di un cliente da positivo a negativo */
@@ -88,9 +86,10 @@ set Categoria = <cat>
 where IDMacchinario = <id_macchina>;
 
 /* OPERAZIONE 13 */
+/* La causale dei ticket riguardante i consumabili non può essere cambiata. */
 UPDATE ticket 
 set Causale = <causale> 
-where IDTicket = <id_ticket> and Causale <> 'Consumabili';
+where IDTicket = <id_ticket> and Causale <> 'Consumabili' AND <causale> <> 'Consumabili';
 
 /* OPERAZIONE 14 */
 UPDATE consumabile 
@@ -117,10 +116,11 @@ DELETE FROM emailtecnico WHERE NumTecnico = <id_tecnico>;
 DELETE FROM datilavorativi WHERE CF = <cod_fisc>;
 DELETE FROM datianagrafici WHERE CodiceFiscale = <cod_fisc>;
 
-/* OPERAZIONE 18 ???? */
-DELETE 
-FROM macchinario 
-WHERE IDMacchinario = <id_macchina>;
+/* OPERAZIONE 18 */
+/* Cancella di un macchinario che non è stato ancora venduto */
+DELETE macc 
+FROM macchinario macc LEFT JOIN acquistomacc a ON macc.IDMacchinario = a.Macchinario 
+WHERE macc.IDMacchinario = <id_macchinario> AND a.Macchinario IS NULL;
 
 /* OPERAZIONE 19 */
 DELETE 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Creato il: Dic 20, 2022 alle 13:00
+-- Creato il: Dic 21, 2022 alle 16:15
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ticket`
+-- Database: `progetto_ticket`
 --
 
 -- --------------------------------------------------------
@@ -132,7 +132,9 @@ CREATE TABLE `assistenzamacc` (
 --
 
 INSERT INTO `assistenzamacc` (`Ticket`, `Macchina`, `Tecnico`, `NumOre`) VALUES
+(12, 6, 1, 6),
 (12, 6, 8, 6),
+(13, 72, 1, NULL),
 (13, 72, 4, 15),
 (13, 72, 8, 3),
 (14, 71, 1, 7),
@@ -472,46 +474,47 @@ CREATE TABLE `garanzia` (
 --
 
 INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`, `Scadenza`, `Macc`) VALUES
-(1, '2022-12-07', 'Ancona', '2023-12-07', 60),
-(2, '2022-12-07', 'Fermo', '2023-12-07', 13),
-(3, '2020-09-25', 'Northville', '2021-09-25', 22),
-(4, '2014-03-02', 'Arlington', '2015-03-02', 9),
-(5, '2020-12-07', 'Bucklin', '2021-12-07', 71),
-(6, '2021-12-16', 'Sykeston', '2022-12-16', 40),
-(7, '2018-06-08', 'Watford City', '2019-06-08', 53),
-(8, '2013-01-19', 'Keene', '2014-01-19', 30),
-(9, '2014-09-26', 'Joseph', '2015-09-26', 54),
-(10, '2018-05-06', 'Wichita', '2019-05-06', 56),
-(11, '2014-03-24', 'Las Vegas', '2015-03-24', 42),
-(12, '2014-08-13', 'Londonderry', '2015-08-13', 72),
-(13, '2013-06-05', 'Macdoel', '2014-06-05', 12),
-(14, '2020-10-07', 'Springfield', '2021-10-07', 8),
-(15, '2019-10-08', 'Bellville', '2020-10-08', 64),
-(16, '2021-07-26', 'Saint Leo', '2022-07-26', 59),
-(17, '2020-05-10', 'Marshfield', '2021-05-10', 5),
-(18, '2021-08-09', 'Agra', '2022-08-09', 70),
-(19, '2019-12-10', 'Reads Landing', '2020-12-10', 44),
-(20, '2016-01-07', 'Daleville', '2017-01-07', 25),
-(21, '2016-07-29', 'Coolidge', '2017-07-29', 11),
-(22, '2019-07-04', 'Porter Corners', '2020-07-04', 57),
-(23, '2018-10-23', 'Orlando', '2019-10-23', 17),
-(24, '2021-10-16', 'Cranberry Twp', '2022-10-16', 2),
-(25, '2014-05-17', 'Uvalde', '2015-05-17', 55),
-(26, '2013-09-10', 'Viola', '2014-09-10', 58),
-(27, '2014-12-12', 'Wayside', '2015-12-12', 39),
-(28, '2017-01-31', 'Willcox', '2018-01-31', 1),
-(29, '2013-09-03', 'Withee', '2014-09-03', 21),
-(30, '2021-06-23', 'Stanford', '2022-06-23', 7),
-(31, '2022-10-22', 'Cedar', '2023-10-22', 16),
-(32, '2015-11-01', 'Sutherlin', '2016-11-01', 41),
-(33, '2015-07-28', 'Kenner', '2016-07-28', 6),
-(34, '2018-10-03', 'Vero Beach', '2019-10-03', 10),
-(35, '2020-08-19', 'Havre', '2021-08-19', 63),
-(36, '2018-03-17', 'Verplanck', '2019-03-17', 14),
-(37, '2019-04-15', 'Saint Petersburg', '2020-04-15', 15),
-(38, '2017-03-18', 'Wynne', '2018-03-18', 18),
-(39, '2022-11-22', 'Rudolph', '2023-11-22', 26),
-(40, '2020-03-26', 'Idaho Falls', '2021-03-26', 29);
+(1, '2022-12-07', 'Ancona', '2023-12-21', 60),
+(2, '2022-12-07', 'Fermo', '2023-12-21', 13),
+(3, '2020-09-25', 'Northville', '2023-12-21', 22),
+(4, '2014-03-02', 'Arlington', '2023-12-21', 9),
+(5, '2020-12-07', 'Bucklin', '2023-12-21', 71),
+(6, '2021-12-16', 'Sykeston', '2023-12-21', 40),
+(7, '2018-06-08', 'Watford City', '2023-12-21', 53),
+(8, '2013-01-19', 'Keene', '2023-12-21', 30),
+(9, '2014-09-26', 'Joseph', '2023-12-21', 54),
+(10, '2018-05-06', 'Wichita', '2023-12-21', 56),
+(11, '2014-03-24', 'Las Vegas', '2023-12-21', 42),
+(12, '2014-08-13', 'Londonderry', '2023-12-21', 72),
+(13, '2013-06-05', 'Macdoel', '2023-12-21', 12),
+(14, '2020-10-07', 'Springfield', '2023-12-21', 8),
+(15, '2019-10-08', 'Bellville', '2023-12-21', 64),
+(16, '2021-07-26', 'Saint Leo', '2023-12-21', 59),
+(17, '2020-05-10', 'Marshfield', '2023-12-21', 5),
+(18, '2021-08-09', 'Agra', '2023-12-21', 70),
+(19, '2019-12-10', 'Reads Landing', '2023-12-21', 44),
+(20, '2016-01-07', 'Daleville', '2023-12-21', 25),
+(21, '2016-07-29', 'Coolidge', '2023-12-21', 11),
+(22, '2019-07-04', 'Porter Corners', '2023-12-21', 57),
+(23, '2018-10-23', 'Orlando', '2023-12-21', 17),
+(24, '2021-10-16', 'Cranberry Twp', '2023-12-21', 2),
+(25, '2014-05-17', 'Uvalde', '2023-12-21', 55),
+(26, '2013-09-10', 'Viola', '2023-12-21', 58),
+(27, '2014-12-12', 'Wayside', '2023-12-21', 39),
+(28, '2017-01-31', 'Willcox', '2023-12-21', 1),
+(29, '2013-09-03', 'Withee', '2023-12-21', 21),
+(30, '2021-06-23', 'Stanford', '2023-12-21', 7),
+(31, '2022-10-22', 'Cedar', '2023-12-21', 16),
+(32, '2015-11-01', 'Sutherlin', '2023-12-21', 41),
+(33, '2015-07-28', 'Kenner', '2023-12-21', 6),
+(34, '2018-10-03', 'Vero Beach', '2023-12-21', 10),
+(35, '2020-08-19', 'Havre', '2023-12-21', 63),
+(36, '2018-03-17', 'Verplanck', '2023-12-21', 14),
+(37, '2019-04-15', 'Saint Petersburg', '2023-12-21', 15),
+(38, '2017-03-18', 'Wynne', '2023-12-21', 18),
+(39, '2022-11-22', 'Rudolph', '2023-12-21', 26),
+(40, '2020-03-26', 'Idaho Falls', '2023-12-21', 29),
+(42, '2022-12-21', 'Ancona', '2024-12-21', 85);
 
 -- --------------------------------------------------------
 
@@ -584,6 +587,40 @@ INSERT INTO `macchinario` (`IDMacchinario`, `Categoria`) VALUES
 (85, 'Kombo TH'),
 (86, 'Booster'),
 (87, 'Booster');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura stand-in per le viste `oreticket`
+-- (Vedi sotto per la vista effettiva)
+--
+CREATE TABLE `oreticket` (
+`ID_Ticket` int(10)
+,`OreTot_Resident` decimal(32,0)
+,`OreTot_NonResident` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura stand-in per le viste `ore_ticket_non_resident`
+-- (Vedi sotto per la vista effettiva)
+--
+CREATE TABLE `ore_ticket_non_resident` (
+`ID_Ticket` int(10)
+,`Ore` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura stand-in per le viste `ore_ticket_resident`
+-- (Vedi sotto per la vista effettiva)
+--
+CREATE TABLE `ore_ticket_resident` (
+`ID_Ticket` int(10)
+,`Ore` decimal(32,0)
+);
 
 -- --------------------------------------------------------
 
@@ -744,24 +781,51 @@ CREATE TABLE `ticket` (
 --
 
 INSERT INTO `ticket` (`IDTicket`, `Causale`, `Priorita`, `Lingua`, `Costo`, `Apertura`, `Chiusura`, `OreImpiegate`, `Cliente`) VALUES
-(1, 'Consumabili', 'Alta', 'Inglese', 30, '2022-12-15', '2022-12-15', 0, '10128395405'),
-(2, 'Fotocamere', 'Bloccata', 'Italiano', NULL, '2022-12-15', NULL, NULL, '26956659580'),
-(4, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2022-10-11', NULL, NULL, '72304749147'),
-(5, 'Consumabili', 'Alta', 'Inglese', 300, '2019-12-05', '2019-12-05', 0, '26368001629'),
-(6, 'Consumabili', 'Alta', 'Inglese', 25, '2022-02-04', '2022-02-04', 0, '90523111782'),
-(7, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2018-10-11', NULL, NULL, '41012850653'),
-(8, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2021-04-08', NULL, NULL, '83229080007'),
-(9, 'Consumabili', 'Alta', 'Italiano', 35, '2022-10-04', '2022-10-04', 0, '55429180819'),
-(11, 'Consulenza software', 'Bloccata', 'Inglese', NULL, '2022-12-01', NULL, NULL, '71471551684'),
-(12, 'Macchina non si avvia', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-19', 6, '16497514769'),
-(13, 'Fotocamere', 'Bassa', 'Inglese', 345, '2022-12-09', '2022-12-13', 18, '65235797314'),
-(14, 'Teste di taglio', 'Bassa', 'Inglese', 185, '2022-12-16', '2022-12-19', 11, '32871434744'),
-(15, 'Aspirazione', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 4, '54936494783'),
-(16, 'Macchina bloccata', 'Bloccata', 'Italiano', NULL, '2022-11-04', NULL, NULL, '89167280676'),
-(17, 'Proiezione dei sistemi cam', 'Media', 'Inglese', 0, '2022-12-15', '2022-12-15', 3, '83007757185'),
-(19, 'Fotocamere', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-20', 18, '16497514769'),
-(20, 'Macchina bloccata', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 15, '32142173559'),
-(21, 'Macchina ferma', 'Bassa', 'Italiano', 115, '2022-12-17', '2022-12-18', 7, '55429180819');
+(1, 'Consumabili', 'Alta', 'Inglese', 30, '2022-12-15', '2022-12-15', 180, '10128395405'),
+(2, 'Fotocamere', 'Bloccata', 'Italiano', NULL, '2022-12-15', NULL, 180, '26956659580'),
+(4, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2022-10-11', NULL, 180, '72304749147'),
+(5, 'Consumabili', 'Alta', 'Inglese', 300, '2019-12-05', '2019-12-05', 180, '26368001629'),
+(6, 'Consumabili', 'Alta', 'Inglese', 25, '2022-02-04', '2022-02-04', 180, '90523111782'),
+(7, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2018-10-11', NULL, 180, '41012850653'),
+(8, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2021-04-08', NULL, 180, '83229080007'),
+(9, 'Consumabili', 'Alta', 'Italiano', 35, '2022-10-04', '2022-10-04', 180, '55429180819'),
+(11, 'Consulenza software', 'Bloccata', 'Inglese', NULL, '2022-12-01', NULL, 180, '71471551684'),
+(12, 'Macchina non si avvia', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-20', 180, '16497514769'),
+(13, 'Fotocamere', 'Bassa', 'Inglese', 345, '2022-12-09', '2022-12-20', 18, '65235797314'),
+(14, 'Teste di taglio', 'Bassa', 'Inglese', 185, '2022-12-16', '2022-12-19', 180, '32871434744'),
+(15, 'Aspirazione', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 180, '54936494783'),
+(16, 'Macchina bloccata', 'Bloccata', 'Italiano', NULL, '2022-11-04', NULL, 180, '89167280676'),
+(17, 'Proiezione dei sistemi cam', 'Media', 'Inglese', 0, '2022-12-15', '2022-12-15', 180, '83007757185'),
+(19, 'Fotocamere', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-20', 180, '16497514769'),
+(20, 'Macchina bloccata', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 180, '32142173559'),
+(21, 'Macchina ferma', 'Bassa', 'Italiano', 115, '2022-12-17', '2022-12-18', 180, '55429180819');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura per vista `oreticket`
+--
+DROP TABLE IF EXISTS `oreticket`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `oreticket`  AS SELECT `a1`.`Ticket` AS `ID_Ticket`, sum(`a1`.`NumOre`) AS `OreTot_Resident`, sum(`a2`.`NumOre`) AS `OreTot_NonResident` FROM (((`assistenzamacc` `a1` join `datilavorativi` `d1` on(`a1`.`Tecnico` = `d1`.`IDTecnico`)) join `assistenzamacc` `a2` on(`a1`.`Ticket` = `a2`.`Ticket`)) join `datilavorativi` `d2` on(`a2`.`Tecnico` = `d2`.`IDTecnico`)) WHERE `d1`.`Resident` = 'si' AND `d2`.`Resident` = 'no' GROUP BY `a1`.`Ticket``Ticket`  ;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura per vista `ore_ticket_non_resident`
+--
+DROP TABLE IF EXISTS `ore_ticket_non_resident`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ore_ticket_non_resident`  AS SELECT `assistenzamacc`.`Ticket` AS `ID_Ticket`, sum(`assistenzamacc`.`NumOre`) AS `Ore` FROM (`assistenzamacc` join `datilavorativi` on(`assistenzamacc`.`Tecnico` = `datilavorativi`.`IDTecnico`)) WHERE `datilavorativi`.`Resident` = 'no' GROUP BY `assistenzamacc`.`Ticket``Ticket`  ;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura per vista `ore_ticket_resident`
+--
+DROP TABLE IF EXISTS `ore_ticket_resident`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ore_ticket_resident`  AS SELECT `assistenzamacc`.`Ticket` AS `ID_Ticket`, sum(`assistenzamacc`.`NumOre`) AS `Ore` FROM (`assistenzamacc` join `datilavorativi` on(`assistenzamacc`.`Tecnico` = `datilavorativi`.`IDTecnico`)) WHERE `datilavorativi`.`Resident` = 'si' GROUP BY `assistenzamacc`.`Ticket``Ticket`  ;
 
 --
 -- Indici per le tabelle scaricate
@@ -899,13 +963,13 @@ ALTER TABLE `datilavorativi`
 -- AUTO_INCREMENT per la tabella `garanzia`
 --
 ALTER TABLE `garanzia`
-  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT per la tabella `macchinario`
 --
 ALTER TABLE `macchinario`
-  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT per la tabella `ticket`

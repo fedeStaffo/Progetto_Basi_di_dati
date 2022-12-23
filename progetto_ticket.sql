@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Creato il: Dic 21, 2022 alle 16:15
+-- Creato il: Dic 23, 2022 alle 12:40
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `progetto_ticket`
+-- Database: `ticket`
 --
 
 -- --------------------------------------------------------
@@ -28,69 +28,71 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `acquistomacc` (
-  `Cliente` char(11) NOT NULL,
-  `Macchinario` int(11) NOT NULL
+  `Macchinario` int(11) NOT NULL,
+  `Cliente` char(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `acquistomacc`
 --
 
-INSERT INTO `acquistomacc` (`Cliente`, `Macchinario`) VALUES
-('10128395405', 16),
-('14617938604', 2),
-('15268876497', 11),
-('16058522218', 12),
-('16497514769', 6),
-('16735731623', 17),
-('22174266763', 60),
-('26041915147', 18),
-('26368001629', 21),
-('26368001629', 40),
-('28054881706', 26),
-('28054881706', 64),
-('31713344653', 53),
-('32142173559', 5),
-('32142173559', 70),
-('32871434744', 39),
-('32871434744', 71),
-('33315005088', 13),
-('33315005088', 14),
-('36144094207', 25),
-('41012850653', 29),
-('42454205237', 30),
-('43849287106', 42),
-('45265299447', 56),
-('48925706556', 73),
-('49335238861', 41),
-('49386669284', 1),
-('49386669284', 44),
-('54936494783', 54),
-('55429180819', 9),
-('56934816291', 74),
-('65235797314', 72),
-('66098192582', 75),
-('68249353645', 76),
-('69090775976', 77),
-('71471551684', 57),
-('72304749147', 78),
-('73586436589', 79),
-('76091394328', 80),
-('78989412550', 22),
-('81383350644', 81),
-('82026462441', 82),
-('83007757185', 55),
-('83229080007', 10),
-('89167280676', 63),
-('90452571726', 83),
-('90523111782', 84),
-('93269259186', 59),
-('95202775872', 85),
-('95890272415', 86),
-('96799763888', 15),
-('97925277933', 8),
-('97925277933', 58),
-('99528944960', 87);
+INSERT INTO `acquistomacc` (`Macchinario`, `Cliente`) VALUES
+(16, '10128395405'),
+(90, '10128395405'),
+(2, '14617938604'),
+(11, '15268876497'),
+(12, '16058522218'),
+(6, '16497514769'),
+(17, '16735731623'),
+(60, '22174266763'),
+(7, '26041915147'),
+(18, '26041915147'),
+(21, '26368001629'),
+(40, '26368001629'),
+(26, '28054881706'),
+(64, '28054881706'),
+(53, '31713344653'),
+(5, '32142173559'),
+(70, '32142173559'),
+(39, '32871434744'),
+(71, '32871434744'),
+(13, '33315005088'),
+(14, '33315005088'),
+(25, '36144094207'),
+(29, '41012850653'),
+(30, '42454205237'),
+(42, '43849287106'),
+(56, '45265299447'),
+(73, '48925706556'),
+(41, '49335238861'),
+(1, '49386669284'),
+(44, '49386669284'),
+(54, '54936494783'),
+(9, '55429180819'),
+(74, '56934816291'),
+(72, '65235797314'),
+(75, '66098192582'),
+(76, '68249353645'),
+(77, '69090775976'),
+(57, '71471551684'),
+(78, '72304749147'),
+(79, '73586436589'),
+(80, '76091394328'),
+(22, '78989412550'),
+(81, '81383350644'),
+(82, '82026462441'),
+(55, '83007757185'),
+(10, '83229080007'),
+(63, '89167280676'),
+(83, '90452571726'),
+(84, '90523111782'),
+(59, '93269259186'),
+(85, '95202775872'),
+(86, '95890272415'),
+(15, '96799763888'),
+(8, '97925277933'),
+(58, '97925277933'),
+(87, '99528944960');
 
 -- --------------------------------------------------------
 
@@ -99,20 +101,21 @@ INSERT INTO `acquistomacc` (`Cliente`, `Macchinario`) VALUES
 --
 
 CREATE TABLE `assistenzacons` (
-  `Ticket` int(10) NOT NULL,
-  `Cons` int(11) NOT NULL
+  `Cons` int(11) NOT NULL,
+  `Ticket` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `assistenzacons`
 --
 
-INSERT INTO `assistenzacons` (`Ticket`, `Cons`) VALUES
-(1, 18),
-(5, 11),
-(6, 3),
-(9, 7),
-(9, 20);
+INSERT INTO `assistenzacons` (`Cons`, `Ticket`) VALUES
+(18, 1),
+(11, 5),
+(3, 6),
+(7, 9),
+(20, 9),
+(10, 56);
 
 -- --------------------------------------------------------
 
@@ -122,8 +125,8 @@ INSERT INTO `assistenzacons` (`Ticket`, `Cons`) VALUES
 
 CREATE TABLE `assistenzamacc` (
   `Ticket` int(10) NOT NULL,
-  `Macchina` int(11) NOT NULL,
   `Tecnico` int(4) NOT NULL,
+  `Macchina` int(11) NOT NULL,
   `NumOre` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -131,22 +134,21 @@ CREATE TABLE `assistenzamacc` (
 -- Dump dei dati per la tabella `assistenzamacc`
 --
 
-INSERT INTO `assistenzamacc` (`Ticket`, `Macchina`, `Tecnico`, `NumOre`) VALUES
-(12, 6, 1, 6),
-(12, 6, 8, 6),
-(13, 72, 1, NULL),
-(13, 72, 4, 15),
-(13, 72, 8, 3),
-(14, 71, 1, 7),
-(14, 71, 3, 4),
-(15, 54, 2, 3),
-(15, 54, 7, 1),
-(17, 55, 6, 3),
-(19, 6, 1, 10),
-(19, 6, 4, 8),
+INSERT INTO `assistenzamacc` (`Ticket`, `Tecnico`, `Macchina`, `NumOre`) VALUES
+(12, 1, 6, 6),
+(12, 8, 6, 6),
+(13, 1, 72, NULL),
+(13, 4, 72, 15),
+(13, 8, 72, 3),
+(14, 1, 71, 7),
+(14, 3, 71, 4),
+(15, 2, 54, 3),
+(15, 7, 54, 1),
+(19, 1, 6, 10),
+(19, 4, 6, 8),
 (20, 5, 5, 15),
-(21, 9, 1, 5),
-(21, 9, 3, 2);
+(21, 1, 9, 5),
+(21, 3, 9, 2);
 
 -- --------------------------------------------------------
 
@@ -234,7 +236,7 @@ CREATE TABLE `consumabile` (
 --
 
 INSERT INTO `consumabile` (`IDConsumabile`, `Categoria`, `Prezzo`) VALUES
-(1, 'Lame di taglio', 100),
+(1, 'Feltri', 15),
 (2, 'Lampade', 25),
 (3, 'Lampade', 25),
 (4, 'Penne', 20),
@@ -254,7 +256,26 @@ INSERT INTO `consumabile` (`IDConsumabile`, `Categoria`, `Prezzo`) VALUES
 (18, 'Fustelle', 30),
 (19, 'Penne', 20),
 (20, 'Feltri', 15),
-(21, 'Feltri', 15);
+(21, 'Feltri', 15),
+(23, 'Feltri', 15),
+(24, 'Feltri', 15),
+(25, 'Frese', 18),
+(26, 'Frese', 18),
+(27, 'Frese', 18),
+(28, 'Fustelle', 30),
+(29, 'Lame di taglio', 100),
+(30, 'Lame di taglio', 100),
+(31, 'Lame di taglio', 100),
+(32, 'Lame di taglio', 100),
+(33, 'Lampade', 25),
+(34, 'Lampade ', 25),
+(35, 'PC', 300),
+(36, 'PC', 300),
+(37, 'PC', 300),
+(38, 'Penne', 20),
+(39, 'Penne', 20),
+(40, 'Punzoni', 40),
+(41, 'Punzoni', 40);
 
 -- --------------------------------------------------------
 
@@ -368,64 +389,64 @@ INSERT INTO `datilavorativi` (`IDTecnico`, `Resident`, `CF`) VALUES
 --
 
 CREATE TABLE `emailcliente` (
-  `NumCliente` char(11) NOT NULL,
-  `Email` varchar(30) NOT NULL
+  `Email` varchar(30) NOT NULL,
+  `NumCliente` char(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `emailcliente`
 --
 
-INSERT INTO `emailcliente` (`NumCliente`, `Email`) VALUES
-('10128395405', 'buildingomega@gmail.com'),
-('14617938604', 'studioinn@virgilio.it'),
-('15268876497', 'bellstar@gmail.com'),
-('16058522218', 'atlanticinn@gmail.com'),
-('16497514769', 'bellbuilding@gmail.com'),
-('16735731623', 'atlnet@gmail.com'),
-('22174266763', 'archspa@libero.it'),
-('26368001629', 'analisispa@virgilio.it'),
-('26368001629', 'solfrontier@gmail.com'),
-('26956659580', 'resteam@yahoo.it'),
-('28054881706', 'starind@gmail.com'),
-('31713344653', 'graphspa@gmail.com'),
-('32142173559', 'analisysnet@gmail.com'),
-('32871434744', 'galaxyel@gmail.com'),
-('33315005088', 'solpow@gmail.com'),
-('36144094207', 'hardwareita@virgilio.it'),
-('41012850653', 'starnet@gmail.com'),
-('42454205237', 'resnet@gmail.com'),
-('43849287106', 'interactivesist@alice.it'),
-('45265299447', 'wconst@libero.it'),
-('48925706556', 'samsungitaly@gmail.com'),
-('49335238861', 'datastudio@libero.it'),
-('49386669284', 'ansign@gmail.com'),
-('55429180819', 'providerstudio@gmail.com'),
-('55429180819', 'telecomit@gmail.com'),
-('56934816291', 'southind@gmail.com'),
-('65235797314', 'netind@gmail.com'),
-('66098192582', 'visiongraph@gmail.com'),
-('68249353645', 'hardwarewest@gmail.com'),
-('69090775976', 'advfrontier@gmail.com'),
-('71471551684', 'constrwest@gmail.com'),
-('71475599444', 'electgeneral@gmail.com'),
-('72304749147', 'advsource@gmail.com'),
-('73586436589', 'generalita@alice.it'),
-('76091394328', 'contractsol@virgilio.it'),
-('78989412550', 'appcontr@gmail.com'),
-('81383350644', 'medbuildspa@gmail.com'),
-('82026462441', 'medspa@gmail.com'),
-('83007757185', 'adventurspa@gmail.com'),
-('83229080007', 'resvision@gmail.com'),
-('89167280676', 'hillapp@alice.it'),
-('90452571726', 'venturepow@gmail.com'),
-('90523111782', 'powvision@virgilio.it'),
-('93269259186', 'starsystem@gmail.com'),
-('95202775872', 'consbuilding@gmail.com'),
-('95890272415', 'frontiergalaxy@gmail.com'),
-('96799763888', 'roboticsjohns@gmail.com'),
-('97925277933', 'bellpacific@gmail.com'),
-('99528944960', 'hnet@gmail.com');
+INSERT INTO `emailcliente` (`Email`, `NumCliente`) VALUES
+('buildingomega@gmail.com', '10128395405'),
+('studioinn@virgilio.it', '14617938604'),
+('bellstar@gmail.com', '15268876497'),
+('atlanticinn@gmail.com', '16058522218'),
+('bellbuilding@gmail.com', '16497514769'),
+('atlnet@gmail.com', '16735731623'),
+('archspa@libero.it', '22174266763'),
+('analisispa@virgilio.it', '26368001629'),
+('solfrontier@gmail.com', '26368001629'),
+('resteam@yahoo.it', '26956659580'),
+('starind@gmail.com', '28054881706'),
+('graphspa@gmail.com', '31713344653'),
+('analisysnet@gmail.com', '32142173559'),
+('galaxyel@gmail.com', '32871434744'),
+('solpow@gmail.com', '33315005088'),
+('hardwareita@virgilio.it', '36144094207'),
+('starnet@gmail.com', '41012850653'),
+('resnet@gmail.com', '42454205237'),
+('interactivesist@alice.it', '43849287106'),
+('wconst@libero.it', '45265299447'),
+('samsungitaly@gmail.com', '48925706556'),
+('datastudio@libero.it', '49335238861'),
+('ansign@gmail.com', '49386669284'),
+('providerstudio@gmail.com', '55429180819'),
+('telecomit@gmail.com', '55429180819'),
+('southind@gmail.com', '56934816291'),
+('netind@gmail.com', '65235797314'),
+('visiongraph@gmail.com', '66098192582'),
+('hardwarewest@gmail.com', '68249353645'),
+('advfrontier@gmail.com', '69090775976'),
+('constrwest@gmail.com', '71471551684'),
+('electgeneral@gmail.com', '71475599444'),
+('advsource@gmail.com', '72304749147'),
+('generalita@alice.it', '73586436589'),
+('contractsol@virgilio.it', '76091394328'),
+('appcontr@gmail.com', '78989412550'),
+('medbuildspa@gmail.com', '81383350644'),
+('medspa@gmail.com', '82026462441'),
+('adventurspa@gmail.com', '83007757185'),
+('resvision@gmail.com', '83229080007'),
+('hillapp@alice.it', '89167280676'),
+('venturepow@gmail.com', '90452571726'),
+('powvision@virgilio.it', '90523111782'),
+('starsystem@gmail.com', '93269259186'),
+('consbuilding@gmail.com', '95202775872'),
+('frontiergalaxy@gmail.com', '95890272415'),
+('roboticsjohns@gmail.com', '96799763888'),
+('bellpacific@gmail.com', '97925277933'),
+('hnet@gmail.com', '99528944960');
 
 -- --------------------------------------------------------
 
@@ -434,26 +455,26 @@ INSERT INTO `emailcliente` (`NumCliente`, `Email`) VALUES
 --
 
 CREATE TABLE `emailtecnico` (
-  `NumTecnico` int(4) NOT NULL,
-  `Email` varchar(30) NOT NULL
+  `Email` varchar(30) NOT NULL,
+  `NumTecnico` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `emailtecnico`
 --
 
-INSERT INTO `emailtecnico` (`NumTecnico`, `Email`) VALUES
-(1, 'enrico.tarli@gmail.com'),
-(1, 'enricotarli.elitron@gmail.com'),
-(2, 'gcarli@gmail.com'),
-(3, 'laura.binachi@libero.it'),
-(3, 'lbianchi@gmail.com'),
-(4, 'edluca@libero.it'),
-(5, 'luigi.verdi@gmail.com'),
-(6, 'aldodraghi@alice.it'),
-(7, 'farmandi@gmail.com'),
-(7, 'franco.armandi@libero.it'),
-(8, 'm.rossi@gmail.com');
+INSERT INTO `emailtecnico` (`Email`, `NumTecnico`) VALUES
+('enrico.tarli@gmail.com', 1),
+('enricotarli.elitron@gmail.com', 1),
+('gcarli@gmail.com', 2),
+('laura.binachi@libero.it', 3),
+('lbianchi@gmail.com', 3),
+('edluca@libero.it', 4),
+('luigi.verdi@gmail.com', 5),
+('aldodraghi@alice.it', 6),
+('farmandi@gmail.com', 7),
+('franco.armandi@libero.it', 7),
+('m.rossi@gmail.com', 8);
 
 -- --------------------------------------------------------
 
@@ -474,47 +495,61 @@ CREATE TABLE `garanzia` (
 --
 
 INSERT INTO `garanzia` (`IDGaranzia`, `DataInstallazione`, `LuogoInstallazione`, `Scadenza`, `Macc`) VALUES
-(1, '2022-12-07', 'Ancona', '2023-12-21', 60),
-(2, '2022-12-07', 'Fermo', '2023-12-21', 13),
-(3, '2020-09-25', 'Northville', '2023-12-21', 22),
-(4, '2014-03-02', 'Arlington', '2023-12-21', 9),
-(5, '2020-12-07', 'Bucklin', '2023-12-21', 71),
-(6, '2021-12-16', 'Sykeston', '2023-12-21', 40),
-(7, '2018-06-08', 'Watford City', '2023-12-21', 53),
-(8, '2013-01-19', 'Keene', '2023-12-21', 30),
-(9, '2014-09-26', 'Joseph', '2023-12-21', 54),
-(10, '2018-05-06', 'Wichita', '2023-12-21', 56),
-(11, '2014-03-24', 'Las Vegas', '2023-12-21', 42),
-(12, '2014-08-13', 'Londonderry', '2023-12-21', 72),
-(13, '2013-06-05', 'Macdoel', '2023-12-21', 12),
-(14, '2020-10-07', 'Springfield', '2023-12-21', 8),
-(15, '2019-10-08', 'Bellville', '2023-12-21', 64),
-(16, '2021-07-26', 'Saint Leo', '2023-12-21', 59),
-(17, '2020-05-10', 'Marshfield', '2023-12-21', 5),
-(18, '2021-08-09', 'Agra', '2023-12-21', 70),
-(19, '2019-12-10', 'Reads Landing', '2023-12-21', 44),
-(20, '2016-01-07', 'Daleville', '2023-12-21', 25),
-(21, '2016-07-29', 'Coolidge', '2023-12-21', 11),
-(22, '2019-07-04', 'Porter Corners', '2023-12-21', 57),
-(23, '2018-10-23', 'Orlando', '2023-12-21', 17),
-(24, '2021-10-16', 'Cranberry Twp', '2023-12-21', 2),
-(25, '2014-05-17', 'Uvalde', '2023-12-21', 55),
-(26, '2013-09-10', 'Viola', '2023-12-21', 58),
-(27, '2014-12-12', 'Wayside', '2023-12-21', 39),
-(28, '2017-01-31', 'Willcox', '2023-12-21', 1),
-(29, '2013-09-03', 'Withee', '2023-12-21', 21),
-(30, '2021-06-23', 'Stanford', '2023-12-21', 7),
-(31, '2022-10-22', 'Cedar', '2023-12-21', 16),
-(32, '2015-11-01', 'Sutherlin', '2023-12-21', 41),
-(33, '2015-07-28', 'Kenner', '2023-12-21', 6),
-(34, '2018-10-03', 'Vero Beach', '2023-12-21', 10),
-(35, '2020-08-19', 'Havre', '2023-12-21', 63),
-(36, '2018-03-17', 'Verplanck', '2023-12-21', 14),
-(37, '2019-04-15', 'Saint Petersburg', '2023-12-21', 15),
-(38, '2017-03-18', 'Wynne', '2023-12-21', 18),
-(39, '2022-11-22', 'Rudolph', '2023-12-21', 26),
-(40, '2020-03-26', 'Idaho Falls', '2023-12-21', 29),
-(42, '2022-12-21', 'Ancona', '2024-12-21', 85);
+(1, '2022-12-07', 'Ancona', '2023-12-07', 60),
+(2, '2022-12-07', 'Amburgo', '2023-12-07', 13),
+(3, '2020-09-25', 'Calgary', '2021-09-25', 22),
+(4, '2014-03-02', 'Torino', '2015-03-02', 9),
+(5, '2020-12-07', 'Victoria', '2021-12-07', 71),
+(6, '2021-12-16', 'Edimburgo', '2022-12-16', 40),
+(7, '2018-06-08', 'Honolulu', '2019-06-08', 53),
+(8, '2013-01-19', 'Liberec', '2014-01-19', 30),
+(9, '2014-09-26', 'Adalia', '2015-09-26', 54),
+(10, '2018-05-06', 'Ascoli', '2019-05-06', 56),
+(11, '2014-03-24', 'Napoli', '2015-03-24', 42),
+(12, '2014-08-13', 'Osaka', '2015-08-13', 72),
+(13, '2013-06-05', 'Nitra', '2014-06-05', 12),
+(14, '2020-10-07', 'Dunedin', '2021-10-07', 8),
+(15, '2019-10-08', 'San Francisco', '2020-10-08', 64),
+(16, '2021-07-26', 'Alessandria', '2022-07-26', 59),
+(17, '2020-05-10', 'Los Angeles', '2021-05-10', 5),
+(18, '2021-08-09', 'Minneapolis', '2022-08-09', 70),
+(19, '2019-12-10', 'Gedda', '2020-12-10', 44),
+(20, '2016-01-07', 'Ancona', '2017-01-07', 25),
+(21, '2016-07-29', 'Marsiglia', '2017-07-29', 11),
+(22, '2019-07-04', 'Pretoria', '2020-07-04', 57),
+(23, '2018-10-23', 'Faro', '2019-10-23', 17),
+(24, '2021-10-16', 'Palermo', '2022-10-16', 2),
+(25, '2014-05-17', 'Findel', '2015-05-17', 55),
+(26, '2013-09-10', 'Hamilton', '2014-09-10', 58),
+(27, '2014-12-12', 'Windsor', '2015-12-12', 39),
+(28, '2017-01-31', 'Riyad', '2018-01-31', 1),
+(29, '2013-09-03', 'Manchester', '2014-09-03', 21),
+(30, '2021-06-23', 'Firenze', '2022-06-23', 7),
+(31, '2022-10-22', 'Shanghai', '2023-10-22', 16),
+(32, '2015-11-01', 'Roma', '2016-11-01', 41),
+(33, '2015-07-28', 'Copenaghen', '2016-07-28', 6),
+(34, '2018-10-03', 'Linz', '2019-10-03', 10),
+(35, '2020-08-19', 'Fermo', '2021-08-19', 63),
+(36, '2018-03-17', 'Amburgo', '2019-03-17', 14),
+(37, '2019-04-15', 'Ottawa', '2020-04-15', 15),
+(38, '2017-03-18', 'Trento', '2018-03-18', 18),
+(39, '2022-11-22', 'Detroit', '2023-11-22', 26),
+(40, '2020-03-26', 'Pola', '2021-03-26', 29),
+(42, '2022-12-21', 'Valona', '2023-12-21', 85),
+(43, '2017-12-05', 'Perugia', '2018-12-05', 73),
+(44, '2018-09-04', 'Varanasi', '2019-09-04', 74),
+(45, '2022-11-02', 'Remich', '2023-11-02', 75),
+(46, '2018-04-05', 'Chicago', '2019-04-05', 76),
+(47, '2015-05-08', 'Milano', '2016-05-08', 77),
+(48, '2022-12-07', 'Taipei', '2023-12-07', 78),
+(49, '2013-06-01', 'Cosenza', '2014-06-01', 79),
+(50, '2022-06-14', 'Genova', '2023-06-14', 80),
+(51, '2022-05-05', 'Monte Giberto', '2023-05-05', 81),
+(52, '2012-12-05', 'Boston', '2013-12-05', 82),
+(53, '2017-06-09', 'Oban', '2018-06-09', 83),
+(54, '2022-06-07', 'Rabat', '2023-06-07', 84),
+(55, '2022-11-15', 'Narva', '2023-11-15', 86),
+(56, '2022-12-22', 'Villaco', '2023-12-22', 87);
 
 -- --------------------------------------------------------
 
@@ -586,19 +621,10 @@ INSERT INTO `macchinario` (`IDMacchinario`, `Categoria`) VALUES
 (84, 'Kombo STC'),
 (85, 'Kombo TH'),
 (86, 'Booster'),
-(87, 'Booster');
-
--- --------------------------------------------------------
-
---
--- Struttura stand-in per le viste `oreticket`
--- (Vedi sotto per la vista effettiva)
---
-CREATE TABLE `oreticket` (
-`ID_Ticket` int(10)
-,`OreTot_Resident` decimal(32,0)
-,`OreTot_NonResident` decimal(32,0)
-);
+(87, 'Booster'),
+(88, 'Kombo TAV'),
+(89, 'Kombo STC'),
+(90, 'Spark');
 
 -- --------------------------------------------------------
 
@@ -662,69 +688,69 @@ INSERT INTO `specializzazione` (`Macchina`, `Tecnico`) VALUES
 --
 
 CREATE TABLE `telcliente` (
-  `NumCliente` char(11) NOT NULL,
-  `Telefono` varchar(13) NOT NULL
+  `Telefono` varchar(13) NOT NULL,
+  `NumCliente` char(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `telcliente`
 --
 
-INSERT INTO `telcliente` (`NumCliente`, `Telefono`) VALUES
-('10128395405', '+867410025845'),
-('10128395405', '+868459321110'),
-('14617938604', '+395846325965'),
-('15268876497', '+338459821001'),
-('16058522218', '+421856395211'),
-('16497514769', '+458653203332'),
-('16735731623', '+351269995127'),
-('22174266763', '+396852244859'),
-('26041915147', '+396523374870'),
-('26368001629', '+448523496511'),
-('26956659580', '+390145796426'),
-('28054881706', '+111482611866'),
-('28054881706', '+177095919533'),
-('31713344653', '+169919923958'),
-('32142173559', '+138805802387'),
-('32871434744', '+167450953447'),
-('33315005088', '+492284749036'),
-('36144094207', '+393738297450'),
-('41012850653', '+385171738154'),
-('42454205237', '+420985933815'),
-('43849287106', '+398231052306'),
-('45265299447', '+390455940165'),
-('48925706556', '+398706648324'),
-('49335238861', '+379000000000'),
-('49386669284', '+966747425197'),
-('54936494783', '+903175939337'),
-('55429180819', '+396672734501'),
-('56934816291', '+912356686126'),
-('65235797314', '+816598426580'),
-('66098192582', '+352781012959'),
-('68249353645', '+148619110484'),
-('69090775976', '+398525949425'),
-('71471551684', '+180519847170'),
-('71471551684', '+180519847179'),
-('71475599444', '+278393030160'),
-('72304749147', '+886748403024'),
-('73586436589', '+399349520095'),
-('76091394328', '+398345499688'),
-('78989412550', '+137374435110'),
-('81383350644', '+394900414694'),
-('82026462441', '+166322200671'),
-('82026462441', '+166322200675'),
-('83007757185', '+352995838638'),
-('83229080007', '+431132819553'),
-('89167280676', '+395851354922'),
-('90452571726', '+640866950556'),
-('90523111782', '+212181139851'),
-('93269259186', '+394448603435'),
-('93685664951', '+370044615215'),
-('95202775872', '+355451947314'),
-('95890272415', '+372746239502'),
-('96799763888', '+115508348524'),
-('97925277933', '+640313826560'),
-('99528944960', '+433232859055');
+INSERT INTO `telcliente` (`Telefono`, `NumCliente`) VALUES
+('+867410025845', '10128395405'),
+('+868459321110', '10128395405'),
+('+395846325965', '14617938604'),
+('+338459821001', '15268876497'),
+('+421856395211', '16058522218'),
+('+458653203332', '16497514769'),
+('+351269995127', '16735731623'),
+('+396852244859', '22174266763'),
+('+396523374870', '26041915147'),
+('+448523496511', '26368001629'),
+('+390145796426', '26956659580'),
+('+111482611866', '28054881706'),
+('+177095919533', '28054881706'),
+('+169919923958', '31713344653'),
+('+138805802387', '32142173559'),
+('+167450953447', '32871434744'),
+('+492284749036', '33315005088'),
+('+393738297450', '36144094207'),
+('+385171738154', '41012850653'),
+('+420985933815', '42454205237'),
+('+398231052306', '43849287106'),
+('+390455940165', '45265299447'),
+('+398706648324', '48925706556'),
+('+379000000000', '49335238861'),
+('+966747425197', '49386669284'),
+('+903175939337', '54936494783'),
+('+396672734501', '55429180819'),
+('+912356686126', '56934816291'),
+('+816598426580', '65235797314'),
+('+352781012959', '66098192582'),
+('+148619110484', '68249353645'),
+('+398525949425', '69090775976'),
+('+180519847170', '71471551684'),
+('+180519847179', '71471551684'),
+('+278393030160', '71475599444'),
+('+886748403024', '72304749147'),
+('+399349520095', '73586436589'),
+('+398345499688', '76091394328'),
+('+137374435110', '78989412550'),
+('+394900414694', '81383350644'),
+('+166322200671', '82026462441'),
+('+166322200675', '82026462441'),
+('+352995838638', '83007757185'),
+('+431132819553', '83229080007'),
+('+395851354922', '89167280676'),
+('+640866950556', '90452571726'),
+('+212181139851', '90523111782'),
+('+394448603435', '93269259186'),
+('+370044615215', '93685664951'),
+('+355451947314', '95202775872'),
+('+372746239502', '95890272415'),
+('+115508348524', '96799763888'),
+('+640313826560', '97925277933'),
+('+433232859055', '99528944960');
 
 -- --------------------------------------------------------
 
@@ -733,30 +759,30 @@ INSERT INTO `telcliente` (`NumCliente`, `Telefono`) VALUES
 --
 
 CREATE TABLE `teltecnico` (
-  `NumTecnico` int(4) NOT NULL,
-  `Telefono` varchar(13) NOT NULL
+  `Telefono` varchar(13) NOT NULL,
+  `NumTecnico` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `teltecnico`
 --
 
-INSERT INTO `teltecnico` (`NumTecnico`, `Telefono`) VALUES
-(1, '+395171085871'),
-(1, '+396149276258'),
-(2, '+391666957717'),
-(2, '+394952738127'),
-(3, '+397065834566'),
-(3, '+398364180032'),
-(4, '+391010743010'),
-(4, '+395474243083'),
-(5, '+391250995336'),
-(6, '+391899270130'),
-(7, '+390264624835'),
-(7, '+390750958932'),
-(7, '+397270167373'),
-(8, '+392333470968'),
-(8, '+396096706240');
+INSERT INTO `teltecnico` (`Telefono`, `NumTecnico`) VALUES
+('+395171085871', 1),
+('+396149276258', 1),
+('+391666957717', 2),
+('+394952738127', 2),
+('+397065834566', 3),
+('+398364180032', 3),
+('+391010743010', 4),
+('+395474243083', 4),
+('+391250995336', 5),
+('+391899270130', 6),
+('+390264624835', 7),
+('+390750958932', 7),
+('+397270167373', 7),
+('+392333470968', 8),
+('+396096706240', 8);
 
 -- --------------------------------------------------------
 
@@ -767,8 +793,8 @@ INSERT INTO `teltecnico` (`NumTecnico`, `Telefono`) VALUES
 CREATE TABLE `ticket` (
   `IDTicket` int(10) NOT NULL,
   `Causale` varchar(100) NOT NULL,
-  `Priorita` varchar(10) NOT NULL,
-  `Lingua` varchar(10) NOT NULL,
+  `Priorita` varchar(10) DEFAULT NULL,
+  `Lingua` varchar(10) DEFAULT NULL,
   `Costo` int(10) DEFAULT NULL,
   `Apertura` date NOT NULL DEFAULT current_timestamp(),
   `Chiusura` date DEFAULT NULL,
@@ -781,33 +807,25 @@ CREATE TABLE `ticket` (
 --
 
 INSERT INTO `ticket` (`IDTicket`, `Causale`, `Priorita`, `Lingua`, `Costo`, `Apertura`, `Chiusura`, `OreImpiegate`, `Cliente`) VALUES
-(1, 'Consumabili', 'Alta', 'Inglese', 30, '2022-12-15', '2022-12-15', 180, '10128395405'),
-(2, 'Fotocamere', 'Bloccata', 'Italiano', NULL, '2022-12-15', NULL, 180, '26956659580'),
-(4, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2022-10-11', NULL, 180, '72304749147'),
-(5, 'Consumabili', 'Alta', 'Inglese', 300, '2019-12-05', '2019-12-05', 180, '26368001629'),
-(6, 'Consumabili', 'Alta', 'Inglese', 25, '2022-02-04', '2022-02-04', 180, '90523111782'),
-(7, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2018-10-11', NULL, 180, '41012850653'),
-(8, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2021-04-08', NULL, 180, '83229080007'),
-(9, 'Consumabili', 'Alta', 'Italiano', 35, '2022-10-04', '2022-10-04', 180, '55429180819'),
-(11, 'Consulenza software', 'Bloccata', 'Inglese', NULL, '2022-12-01', NULL, 180, '71471551684'),
-(12, 'Macchina non si avvia', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-20', 180, '16497514769'),
+(1, 'Consumabili', 'Alta', 'Inglese', 30, '2022-12-15', '2022-12-15', 0, '10128395405'),
+(2, 'Fotocamere', 'Bloccata', 'Italiano', NULL, '2022-12-15', NULL, NULL, '26956659580'),
+(4, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2022-10-11', NULL, NULL, '72304749147'),
+(5, 'Consumabili', 'Alta', 'Inglese', 300, '2019-12-05', '2019-12-05', 0, '26368001629'),
+(6, 'Consumabili', 'Alta', 'Inglese', 25, '2022-02-04', '2022-02-04', 0, '90523111782'),
+(7, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2018-10-11', NULL, NULL, '41012850653'),
+(8, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2021-04-08', NULL, NULL, '83229080007'),
+(9, 'Consumabili', 'Alta', 'Italiano', 35, '2022-10-04', '2022-10-04', 0, '55429180819'),
+(11, 'Consulenza software', 'Bloccata', 'Inglese', NULL, '2022-12-01', NULL, NULL, '71471551684'),
+(12, 'Macchina non si avvia', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-20', 12, '16497514769'),
 (13, 'Fotocamere', 'Bassa', 'Inglese', 345, '2022-12-09', '2022-12-20', 18, '65235797314'),
-(14, 'Teste di taglio', 'Bassa', 'Inglese', 185, '2022-12-16', '2022-12-19', 180, '32871434744'),
-(15, 'Aspirazione', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 180, '54936494783'),
-(16, 'Macchina bloccata', 'Bloccata', 'Italiano', NULL, '2022-11-04', NULL, 180, '89167280676'),
-(17, 'Proiezione dei sistemi cam', 'Media', 'Inglese', 0, '2022-12-15', '2022-12-15', 180, '83007757185'),
-(19, 'Fotocamere', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-20', 180, '16497514769'),
-(20, 'Macchina bloccata', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 180, '32142173559'),
-(21, 'Macchina ferma', 'Bassa', 'Italiano', 115, '2022-12-17', '2022-12-18', 180, '55429180819');
-
--- --------------------------------------------------------
-
---
--- Struttura per vista `oreticket`
---
-DROP TABLE IF EXISTS `oreticket`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `oreticket`  AS SELECT `a1`.`Ticket` AS `ID_Ticket`, sum(`a1`.`NumOre`) AS `OreTot_Resident`, sum(`a2`.`NumOre`) AS `OreTot_NonResident` FROM (((`assistenzamacc` `a1` join `datilavorativi` `d1` on(`a1`.`Tecnico` = `d1`.`IDTecnico`)) join `assistenzamacc` `a2` on(`a1`.`Ticket` = `a2`.`Ticket`)) join `datilavorativi` `d2` on(`a2`.`Tecnico` = `d2`.`IDTecnico`)) WHERE `d1`.`Resident` = 'si' AND `d2`.`Resident` = 'no' GROUP BY `a1`.`Ticket``Ticket`  ;
+(14, 'Teste di taglio', 'Bassa', 'Inglese', 185, '2022-12-16', '2022-12-19', 11, '32871434744'),
+(15, 'Aspirazione', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 4, '54936494783'),
+(16, 'Macchina bloccata', 'Bloccata', 'Italiano', NULL, '2022-11-04', NULL, NULL, '89167280676'),
+(19, 'Fotocamere', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-20', 18, '16497514769'),
+(20, 'Macchina bloccata', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 15, '32142173559'),
+(21, 'Macchina ferma', 'Bassa', 'Italiano', 115, '2022-12-17', '2022-12-18', 7, '55429180819'),
+(56, 'Consumabili', 'Alta', 'Italiano', 40, '2022-12-22', '2022-12-22', 0, '36144094207'),
+(57, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2022-12-22', NULL, NULL, '26041915147');
 
 -- --------------------------------------------------------
 
@@ -835,8 +853,9 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Indici per le tabelle `acquistomacc`
 --
 ALTER TABLE `acquistomacc`
-  ADD PRIMARY KEY (`Cliente`,`Macchinario`),
-  ADD UNIQUE KEY `Macchinario` (`Macchinario`);
+  ADD PRIMARY KEY (`Macchinario`),
+  ADD KEY `Cliente` (`Cliente`),
+  ADD KEY `Macchinario` (`Macchinario`);
 
 --
 -- Indici per le tabelle `assistenzacons`
@@ -871,7 +890,7 @@ ALTER TABLE `consumabile`
 --
 ALTER TABLE `contratto`
   ADD PRIMARY KEY (`IDContratto`),
-  ADD UNIQUE KEY `Cliente` (`Cliente`);
+  ADD KEY `Cliente - > Cliente.PartitaIVA` (`Cliente`);
 
 --
 -- Indici per le tabelle `datianagrafici`
@@ -890,13 +909,15 @@ ALTER TABLE `datilavorativi`
 -- Indici per le tabelle `emailcliente`
 --
 ALTER TABLE `emailcliente`
-  ADD PRIMARY KEY (`NumCliente`,`Email`);
+  ADD PRIMARY KEY (`Email`),
+  ADD KEY `NumCliente - > Cliente.Partita_IVA` (`NumCliente`);
 
 --
 -- Indici per le tabelle `emailtecnico`
 --
 ALTER TABLE `emailtecnico`
-  ADD PRIMARY KEY (`NumTecnico`,`Email`);
+  ADD PRIMARY KEY (`Email`),
+  ADD KEY `NumTecnico - > DatiLavorativi.IDTecnico` (`NumTecnico`);
 
 --
 -- Indici per le tabelle `garanzia`
@@ -916,26 +937,28 @@ ALTER TABLE `macchinario`
 --
 ALTER TABLE `specializzazione`
   ADD PRIMARY KEY (`Macchina`,`Tecnico`),
-  ADD KEY `Tecnico->DatiLavorativi.IDTecnico` (`Tecnico`);
+  ADD KEY `Tecnico - > DatiLavorativi.IDTecnico` (`Tecnico`);
 
 --
 -- Indici per le tabelle `telcliente`
 --
 ALTER TABLE `telcliente`
-  ADD PRIMARY KEY (`NumCliente`,`Telefono`);
+  ADD PRIMARY KEY (`Telefono`),
+  ADD KEY `NumCliente - > Cliente.PartitaIVA` (`NumCliente`);
 
 --
 -- Indici per le tabelle `teltecnico`
 --
 ALTER TABLE `teltecnico`
-  ADD PRIMARY KEY (`NumTecnico`,`Telefono`);
+  ADD PRIMARY KEY (`Telefono`),
+  ADD KEY `NumTecnico - > DatiLavorativi.ID_Tecnico` (`NumTecnico`);
 
 --
 -- Indici per le tabelle `ticket`
 --
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`IDTicket`),
-  ADD KEY `Cliente->Cliente.Partita_IVA` (`Cliente`);
+  ADD KEY `Cliente - > Cliente.Partita_IVA` (`Cliente`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -945,37 +968,31 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT per la tabella `consumabile`
 --
 ALTER TABLE `consumabile`
-  MODIFY `IDConsumabile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT per la tabella `contratto`
---
-ALTER TABLE `contratto`
-  MODIFY `IDContratto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `IDConsumabile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT per la tabella `datilavorativi`
 --
 ALTER TABLE `datilavorativi`
-  MODIFY `IDTecnico` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `IDTecnico` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT per la tabella `garanzia`
 --
 ALTER TABLE `garanzia`
-  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT per la tabella `macchinario`
 --
 ALTER TABLE `macchinario`
-  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT per la tabella `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `IDTicket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `IDTicket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- Limiti per le tabelle scaricate
@@ -985,77 +1002,79 @@ ALTER TABLE `ticket`
 -- Limiti per la tabella `acquistomacc`
 --
 ALTER TABLE `acquistomacc`
+  ADD CONSTRAINT `Cliente` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`),
   ADD CONSTRAINT `Cliente->Cliente.Partita-IVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`),
+  ADD CONSTRAINT `Macchinario` FOREIGN KEY (`Macchinario`) REFERENCES `macchinario` (`IDMacchinario`),
   ADD CONSTRAINT `Macchinario->Macchinario.IDMacchinario` FOREIGN KEY (`Macchinario`) REFERENCES `macchinario` (`IDMacchinario`);
 
 --
 -- Limiti per la tabella `assistenzacons`
 --
 ALTER TABLE `assistenzacons`
-  ADD CONSTRAINT `Cons` FOREIGN KEY (`Cons`) REFERENCES `consumabile` (`IDConsumabile`),
-  ADD CONSTRAINT `Ticket` FOREIGN KEY (`Ticket`) REFERENCES `ticket` (`IDTicket`);
+  ADD CONSTRAINT `Cons - > Consumabile.ID_Consumabile` FOREIGN KEY (`Cons`) REFERENCES `consumabile` (`IDConsumabile`),
+  ADD CONSTRAINT `Ticket - > Ticket.ID_Ticket` FOREIGN KEY (`Ticket`) REFERENCES `ticket` (`IDTicket`);
 
 --
 -- Limiti per la tabella `assistenzamacc`
 --
 ALTER TABLE `assistenzamacc`
-  ADD CONSTRAINT `Macchina->Macchinario.IDMacchinario` FOREIGN KEY (`Macchina`) REFERENCES `macchinario` (`IDMacchinario`),
-  ADD CONSTRAINT `Tecnico->DatiLavorativi.ID_Tecnico` FOREIGN KEY (`Tecnico`) REFERENCES `datilavorativi` (`IDTecnico`),
-  ADD CONSTRAINT `Ticket->Ticket.IDTicket` FOREIGN KEY (`Ticket`) REFERENCES `ticket` (`IDTicket`);
+  ADD CONSTRAINT `Macchina - > Macchinario.ID_Macchinario` FOREIGN KEY (`Macchina`) REFERENCES `macchinario` (`IDMacchinario`),
+  ADD CONSTRAINT `Tecnico - > DatiLavorativi.ID_Tecnico` FOREIGN KEY (`Tecnico`) REFERENCES `datilavorativi` (`IDTecnico`),
+  ADD CONSTRAINT `Ticket - > Ticket.IDTicket` FOREIGN KEY (`Ticket`) REFERENCES `ticket` (`IDTicket`);
 
 --
 -- Limiti per la tabella `contratto`
 --
 ALTER TABLE `contratto`
-  ADD CONSTRAINT `Cliente->Cliente.PartitaIVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`);
+  ADD CONSTRAINT `Cliente - > Cliente.PartitaIVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`);
 
 --
 -- Limiti per la tabella `datilavorativi`
 --
 ALTER TABLE `datilavorativi`
-  ADD CONSTRAINT `CF->DatiAnagrafici.CodiceFiscale` FOREIGN KEY (`CF`) REFERENCES `datianagrafici` (`CodiceFiscale`);
+  ADD CONSTRAINT `CF - > DatiAnagrafici.CodiceFiscale` FOREIGN KEY (`CF`) REFERENCES `datianagrafici` (`CodiceFiscale`);
 
 --
 -- Limiti per la tabella `emailcliente`
 --
 ALTER TABLE `emailcliente`
-  ADD CONSTRAINT `NumCliente->Cliente.Partita_IVA` FOREIGN KEY (`NumCliente`) REFERENCES `cliente` (`Partita_IVA`);
+  ADD CONSTRAINT `NumCliente - > Cliente.Partita_IVA` FOREIGN KEY (`NumCliente`) REFERENCES `cliente` (`Partita_IVA`);
 
 --
 -- Limiti per la tabella `emailtecnico`
 --
 ALTER TABLE `emailtecnico`
-  ADD CONSTRAINT `NumTecnico->DatiLavorativi.IDTecnico` FOREIGN KEY (`NumTecnico`) REFERENCES `datilavorativi` (`IDTecnico`);
+  ADD CONSTRAINT `NumTecnico - > DatiLavorativi.IDTecnico` FOREIGN KEY (`NumTecnico`) REFERENCES `datilavorativi` (`IDTecnico`);
 
 --
 -- Limiti per la tabella `garanzia`
 --
 ALTER TABLE `garanzia`
-  ADD CONSTRAINT `Macc->Macchinario.IDMacchinario` FOREIGN KEY (`Macc`) REFERENCES `macchinario` (`IDMacchinario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `Macc - > Macchinario.IDMacchinario ` FOREIGN KEY (`Macc`) REFERENCES `macchinario` (`IDMacchinario`);
 
 --
 -- Limiti per la tabella `specializzazione`
 --
 ALTER TABLE `specializzazione`
-  ADD CONSTRAINT `Tecnico->DatiLavorativi.IDTecnico` FOREIGN KEY (`Tecnico`) REFERENCES `datilavorativi` (`IDTecnico`);
+  ADD CONSTRAINT `Tecnico - > DatiLavorativi.IDTecnico` FOREIGN KEY (`Tecnico`) REFERENCES `datilavorativi` (`IDTecnico`);
 
 --
 -- Limiti per la tabella `telcliente`
 --
 ALTER TABLE `telcliente`
-  ADD CONSTRAINT `NumCliente->Cliente.PartitaIVA` FOREIGN KEY (`NumCliente`) REFERENCES `cliente` (`Partita_IVA`);
+  ADD CONSTRAINT `NumCliente - > Cliente.PartitaIVA` FOREIGN KEY (`NumCliente`) REFERENCES `cliente` (`Partita_IVA`);
 
 --
 -- Limiti per la tabella `teltecnico`
 --
 ALTER TABLE `teltecnico`
-  ADD CONSTRAINT `NumTecnico->DatiLavorativi.ID_Tecnico` FOREIGN KEY (`NumTecnico`) REFERENCES `datilavorativi` (`IDTecnico`);
+  ADD CONSTRAINT `NumTecnico - > DatiLavorativi.ID_Tecnico` FOREIGN KEY (`NumTecnico`) REFERENCES `datilavorativi` (`IDTecnico`);
 
 --
 -- Limiti per la tabella `ticket`
 --
 ALTER TABLE `ticket`
-  ADD CONSTRAINT `Cliente->Cliente.Partita_IVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`);
+  ADD CONSTRAINT `Cliente - > Cliente.Partita_IVA` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Partita_IVA`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

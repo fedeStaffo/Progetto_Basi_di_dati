@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Creato il: Dic 23, 2022 alle 12:40
+-- Creato il: Dic 26, 2022 alle 20:08
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -49,6 +49,7 @@ INSERT INTO `acquistomacc` (`Macchinario`, `Cliente`) VALUES
 (18, '26041915147'),
 (21, '26368001629'),
 (40, '26368001629'),
+(150, '26956659580'),
 (26, '28054881706'),
 (64, '28054881706'),
 (53, '31713344653'),
@@ -115,7 +116,10 @@ INSERT INTO `assistenzacons` (`Cons`, `Ticket`) VALUES
 (3, 6),
 (7, 9),
 (20, 9),
-(10, 56);
+(10, 56),
+(14, 63),
+(2, 64),
+(4, 65);
 
 -- --------------------------------------------------------
 
@@ -137,18 +141,36 @@ CREATE TABLE `assistenzamacc` (
 INSERT INTO `assistenzamacc` (`Ticket`, `Tecnico`, `Macchina`, `NumOre`) VALUES
 (12, 1, 6, 6),
 (12, 8, 6, 6),
-(13, 1, 72, NULL),
+(13, 1, 72, 5),
 (13, 4, 72, 15),
 (13, 8, 72, 3),
 (14, 1, 71, 7),
 (14, 3, 71, 4),
 (15, 2, 54, 3),
 (15, 7, 54, 1),
+(17, 1, 13, 3),
+(17, 7, 13, 3),
 (19, 1, 6, 10),
 (19, 4, 6, 8),
 (20, 5, 5, 15),
 (21, 1, 9, 5),
-(21, 3, 9, 2);
+(21, 3, 9, 2),
+(59, 2, 16, 5),
+(59, 3, 16, 5),
+(60, 1, 14, 10),
+(61, 5, 11, 5),
+(62, 2, 12, 7),
+(69, 8, 64, 5),
+(71, 5, 5, 8),
+(72, 5, 13, 5),
+(73, 5, 25, 6),
+(75, 7, 30, 9),
+(75, 8, 30, 6),
+(76, 2, 42, 5),
+(78, 2, 73, 5),
+(78, 7, 73, 10),
+(80, 3, 1, 5),
+(80, 6, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -326,7 +348,17 @@ INSERT INTO `contratto` (`IDContratto`, `DataInizio`, `DataFine`, `Canone`, `Ban
 (27, '2021-12-06', '2024-12-06', 800, 'Ace Bank', '99528944960'),
 (28, '2022-01-15', '2025-01-15', 7000, 'Ace Bank', '41012850653'),
 (29, '2022-03-17', '2025-03-17', 4500, 'Ace Bank', '49335238861'),
-(30, '2022-04-10', '2025-04-10', 200, 'Ace Bank', '66098192582');
+(30, '2022-04-10', '2025-04-10', 200, 'Ace Bank', '66098192582'),
+(31, '2022-12-05', '2025-12-05', 1200, 'National Bank', '97925277933'),
+(32, '2022-08-09', '2025-08-09', 2000, 'Premium Bank', '96799763888'),
+(33, '2020-12-02', '2023-12-02', 400, 'Capital Trust', '95890272415'),
+(34, '2019-12-31', '2022-12-31', 600, 'Joint Credit Union', '93269259186'),
+(35, '2022-04-06', '2025-04-06', 800, 'Joint Credit Union', '89167280676'),
+(36, '2020-12-09', '2023-12-09', 1000, 'Credit Union', '45265299447'),
+(37, '2022-01-01', '2025-12-01', 450, 'Joint Credit Union', '73586436589'),
+(38, '2020-03-11', '2023-03-11', 550, 'Premium Bank', '69090775976'),
+(39, '2022-07-04', '2025-07-04', 600, 'Credit Union', '65235797314'),
+(40, '2021-05-05', '2024-05-05', 750, 'Credit Union', '56934816291');
 
 -- --------------------------------------------------------
 
@@ -624,7 +656,13 @@ INSERT INTO `macchinario` (`IDMacchinario`, `Categoria`) VALUES
 (87, 'Booster'),
 (88, 'Kombo TAV'),
 (89, 'Kombo STC'),
-(90, 'Spark');
+(90, 'Spark'),
+(145, 'Kombo TAV'),
+(146, 'Kombo TAV'),
+(147, 'Kombo STC'),
+(148, 'Kombo TH'),
+(149, 'Spark'),
+(150, 'Booster');
 
 -- --------------------------------------------------------
 
@@ -666,10 +704,10 @@ CREATE TABLE `specializzazione` (
 INSERT INTO `specializzazione` (`Macchina`, `Tecnico`) VALUES
 ('Booster', 1),
 ('Booster', 3),
-('Booster', 6),
+('Booster', 5),
 ('Kombo STC', 2),
-('Kombo STC', 5),
 ('Kombo STC', 7),
+('Kombo STC', 8),
 ('Kombo TAV', 4),
 ('Kombo TAV', 5),
 ('Kombo TAV', 7),
@@ -679,6 +717,7 @@ INSERT INTO `specializzazione` (`Macchina`, `Tecnico`) VALUES
 ('Kombo TH', 7),
 ('Spark', 1),
 ('Spark', 4),
+('Spark', 6),
 ('Spark', 8);
 
 -- --------------------------------------------------------
@@ -821,11 +860,34 @@ INSERT INTO `ticket` (`IDTicket`, `Causale`, `Priorita`, `Lingua`, `Costo`, `Ape
 (14, 'Teste di taglio', 'Bassa', 'Inglese', 185, '2022-12-16', '2022-12-19', 11, '32871434744'),
 (15, 'Aspirazione', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 4, '54936494783'),
 (16, 'Macchina bloccata', 'Bloccata', 'Italiano', NULL, '2022-11-04', NULL, NULL, '89167280676'),
+(17, 'Fotocamere', 'Alta', 'Inglese', 0, '2022-12-23', '2022-12-23', 6, '33315005088'),
 (19, 'Fotocamere', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-20', 18, '16497514769'),
 (20, 'Macchina bloccata', 'Media', 'Inglese', 0, '2022-12-16', '2022-12-17', 15, '32142173559'),
 (21, 'Macchina ferma', 'Bassa', 'Italiano', 115, '2022-12-17', '2022-12-18', 7, '55429180819'),
 (56, 'Consumabili', 'Alta', 'Italiano', 40, '2022-12-22', '2022-12-22', 0, '36144094207'),
-(57, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2022-12-22', NULL, NULL, '26041915147');
+(57, 'Consumabili', 'Bloccata', 'Inglese', NULL, '2022-12-22', NULL, NULL, '26041915147'),
+(59, 'Fotocamere', 'Alta', 'Inglese', 0, '2022-12-26', '2022-12-26', 5, '10128395405'),
+(60, 'Macchina ferma', 'Media', 'Italiano', 0, '2022-12-26', '2022-12-26', 10, '14617938604'),
+(61, 'Teste di taglio', 'Media', 'Inglese', 0, '2022-12-26', '2022-12-26', 5, '15268876497'),
+(62, 'Consulenza software', 'Media', 'Inglese', 0, '2022-12-26', '2022-12-26', 7, '16058522218'),
+(63, 'Consumabili', 'Alta', 'Inglese', 30, '2022-12-26', '2022-12-26', 0, '16497514769'),
+(64, 'Consumabili', 'Alta', 'Inglese', 25, '2022-12-26', '2022-12-26', 0, '16735731623'),
+(65, 'Consumabili', 'Alta', 'Italiano', 20, '2022-12-26', '2022-12-26', 0, '22174266763'),
+(66, 'Consumabili', 'Bloccata', 'Italiano', NULL, '2022-12-26', NULL, NULL, '26041915147'),
+(67, 'Consumabili', 'Alta', 'Inglese', 40, '2022-12-26', '2022-12-26', 0, '26368001629'),
+(68, 'Macchina non si avvia', 'Bloccata', 'Italiano', NULL, '2022-12-26', NULL, NULL, '26956659580'),
+(69, 'Macchina non si avvia', 'Media', 'Inglese', 0, '2022-12-26', '2022-12-26', 5, '28054881706'),
+(70, 'Consulenza software', 'Bloccata', 'Inglese', NULL, '2022-12-26', NULL, NULL, '31713344653'),
+(71, 'Consulenza software', 'Media', 'Inglese', 0, '2022-12-26', '2022-12-26', 8, '32142173559'),
+(72, 'Fotocamere', 'Alta', 'Inglese', 0, '2022-12-26', '2022-12-26', 5, '33315005088'),
+(73, 'Fotocamere', 'Bassa', 'Italiano', 90, '2022-12-26', '2022-12-26', 6, '36144094207'),
+(74, 'Aspirazione', 'Bloccata', 'Inglese', NULL, '2022-12-26', NULL, NULL, '41012850653'),
+(75, 'Aspirazione', 'Bassa', 'Inglese', 270, '2022-12-26', '2022-12-26', 15, '42454205237'),
+(76, 'Teste di taglio', 'Media', 'Italiano', 0, '2022-12-26', '2022-12-26', 5, '43849287106'),
+(77, 'Teste di taglio', 'Bloccata', 'Italiano', NULL, '2022-12-26', NULL, NULL, '45265299447'),
+(78, 'Teste di taglio', 'Bassa', 'Italiano', 275, '2022-12-26', '2022-12-26', 15, '48925706556'),
+(79, 'Macchina ferma', 'Bloccata', 'Inglese', NULL, '2022-12-26', NULL, NULL, '49335238861'),
+(80, 'Macchina ferma', 'Bassa', 'Inglese', 250, '2022-12-26', '2022-12-26', 15, '49386669284');
 
 -- --------------------------------------------------------
 
@@ -971,6 +1033,12 @@ ALTER TABLE `consumabile`
   MODIFY `IDConsumabile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
+-- AUTO_INCREMENT per la tabella `contratto`
+--
+ALTER TABLE `contratto`
+  MODIFY `IDContratto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
 -- AUTO_INCREMENT per la tabella `datilavorativi`
 --
 ALTER TABLE `datilavorativi`
@@ -980,19 +1048,19 @@ ALTER TABLE `datilavorativi`
 -- AUTO_INCREMENT per la tabella `garanzia`
 --
 ALTER TABLE `garanzia`
-  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `IDGaranzia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT per la tabella `macchinario`
 --
 ALTER TABLE `macchinario`
-  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+  MODIFY `IDMacchinario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
 -- AUTO_INCREMENT per la tabella `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `IDTicket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `IDTicket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- Limiti per le tabelle scaricate
